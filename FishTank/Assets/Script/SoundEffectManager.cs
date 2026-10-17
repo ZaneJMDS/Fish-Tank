@@ -44,6 +44,7 @@ public class SoundEffectManager : MonoBehaviour
     void Start()
     {
         sfx_slider.onValueChanged.AddListener(delegate { OnValueChanged(); });
+        SetVolume(0.5f); // Start volume on half
     }
 
     public static void SetVolume(float _volume)

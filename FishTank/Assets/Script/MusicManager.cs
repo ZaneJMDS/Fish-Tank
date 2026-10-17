@@ -35,6 +35,7 @@ public class MusicManager : MonoBehaviour
         }
 
         music_slider.onValueChanged.AddListener(delegate { SetVolume(music_slider.value); });
+        SetVolume(0.5f);
     }
 
     public static void SetVolume(float _volume)

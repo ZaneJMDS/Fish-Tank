@@ -15,7 +15,7 @@ using UnityEngine.InputSystem;
 public class PlayerLook : Look
 {
     // For projectiles
-    public ProjectileBehaviour projectile;
+    public GameObject projectile;
     public bool can_fire = true;
     private float timer;
     [SerializeField] public float time_between_firing = 0.5f;

@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 move_input;
     private float sprite_radius;
 
-    private GameObject Bubble; // Bubble exists in the world
+    public GameObject Bubble; // Bubble exists in the world
 
     private CameraBehaviour camera_behaviour;
 
@@ -31,8 +31,6 @@ public class PlayerMovement : MonoBehaviour
         sprite_renderer = GetComponent<SpriteRenderer>();
         sprite_radius = 0.05f * sprite_renderer.sprite.bounds.extents.x; // Unity's dumb radius math converting pixels to screen space
 
-        // find the bubble
-        Bubble = GameObject.FindGameObjectWithTag("Bubbles");
         camera_behaviour = GetComponent<CameraBehaviour>();
     }
 
@@ -57,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D _other)
     {
-        // Player picks up the bubble
+        // Player picks up the bubble on collision
         if (_other.CompareTag("Bubbles"))
         {
             health += 5;
