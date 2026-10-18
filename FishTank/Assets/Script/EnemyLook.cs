@@ -31,7 +31,6 @@ public class EnemyLook : Look
         // Theres probbably a better way, blind leads the blind
         player_look = player.GetComponent<PlayerLook>();
 
-        obj_game_manager = GameObject.FindGameObjectWithTag("Game Manager");
         game_manager = obj_game_manager.GetComponent<GameManager>();
     }
 

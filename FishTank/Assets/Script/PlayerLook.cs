@@ -16,6 +16,9 @@ public class PlayerLook : Look
 {
     // For projectiles
     public GameObject projectile;
+    public GameObject hitscan;
+
+    // Stats
     public bool can_fire = true;
     private float timer;
     [SerializeField] public float time_between_firing = 0.5f;
@@ -24,18 +27,22 @@ public class PlayerLook : Look
     [SerializeField] private float lerp_speed = 1f;
     private Vector3 currentAngle;
 
+    // Line
+    public LineRenderer target_line;
+
     // Update is called once per frame
     void Update()
     {
+        // Rotate towards the mouse
         currentAngle = transform.eulerAngles; // Update the current angle each frame
-
         Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Get mouse position relative to the screen
         Vector2 direction = (mouse_pos - transform.position); // Convert to 2D
-
         float angle_deg = FaceTarget(direction);
-        transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(currentAngle.z, angle_deg, Time.deltaTime * lerp_speed));
+        transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(currentAngle.z, angle_deg, Time.deltaTime * lerp_speed)); // Lerp so not instant
 
-        Debug.DrawLine(transform.position, mouse_pos, Color.white, Time.deltaTime); // Draw a line from the player to the mouse
+        // Draw a line from the player to the mouse
+        target_line.SetPosition(0, transform.position);
+        target_line.SetPosition(1, mouse_pos);
 
         // Delay between firing
         if (!can_fire)
@@ -52,9 +59,33 @@ public class PlayerLook : Look
         if (Input.GetMouseButton(0) && can_fire)
         {
             can_fire = false;
-            // Summon a bullet at the player's position and where they are facing
+
+            // Summon a projectile at the player's position and where they are facing
             Quaternion bullet_offset = transform.rotation * Quaternion.Euler(0, 0, 270);
             Instantiate(projectile, transform.position, bullet_offset);
+        }
+
+        // Right MB held
+        if (Input.GetMouseButton(1) && can_fire)
+        {
+            can_fire = false;
+
+            // Summon a projectile at the player's position and where they are facing
+            Quaternion bullet_offset = transform.rotation * Quaternion.Euler(0, 0, 270);
+            Instantiate(hitscan, transform.position, bullet_offset);
+
+            var hit = Physics2D.Raycast(transform.position, mouse_pos);
+
+            // Need to update
+            if (hit)
+            {
+                Debug.Log("Hit");
+            }
+
+            else
+            {
+                Debug.Log("Miss");
+            }
         }
     }
 }
