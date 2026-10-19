@@ -12,10 +12,9 @@ using UnityEngine;
 public class EnemyLook : Look
 {
     // Enemy stat field
-    [SerializeField] private int health = 10;
+    [SerializeField] public int health = 10;
     [SerializeField] private float speed = 2f;
     [SerializeField] private float lerp_speed = 2f;
-    [SerializeField] private float time_between_firing = 0.5f;
 
     private Vector3 currentAngle;
     public GameObject player; // Needs to know the player exists
@@ -38,9 +37,9 @@ public class EnemyLook : Look
     void Update()
     {
         currentAngle = transform.eulerAngles; // Update the current angle each frame
-        Vector2 direction = (player.transform.position - transform.position); // Convert to 2D
+        Vector2 target_direction = (player.transform.position - transform.position); // Convert to 2D
 
-        transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(currentAngle.z, FaceTarget(direction), Time.deltaTime * lerp_speed));
+        transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(currentAngle.z, FaceTarget(target_direction), Time.deltaTime * lerp_speed));
 
         // If health is less than or equal to 0 you shall be gone
         if (health <= 0)
@@ -54,6 +53,8 @@ public class EnemyLook : Look
     // If the enemy gets hit by something 
     private void OnTriggerEnter2D(Collider2D _other)
     {
+        Debug.Log("EnemyHit");
+
         // If hit by a projectile, decrease health and increase score
         if (_other.CompareTag("Projectile"))
         {

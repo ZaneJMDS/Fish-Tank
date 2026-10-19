@@ -24,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
 
     private CameraBehaviour camera_behaviour;
 
+    // Health sprites
+    public Sprite full_health;
+    public Sprite med_health;
+    public Sprite low_health;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +50,18 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y + sprite_radius > camera_behaviour.cameraRect.yMax && move_input.y > 0) { move_input.y = 0; } // Down
 
         rb.linearVelocity = move_input * move_speed;
+
+        gameObject.GetComponent<SpriteRenderer>().sprite = full_health;
+
+        if (health < 5)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = med_health;
+        }
+
+        else if (health < 1)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = low_health;
+        }
     }
 
     // Move in direction held
