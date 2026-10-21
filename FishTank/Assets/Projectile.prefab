@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9038099541279155711}
   - component: {fileID: 1248463773247992737}
-  - component: {fileID: -5075137467363483186}
   - component: {fileID: 3763133262327144598}
   - component: {fileID: 8337459721866248803}
   - component: {fileID: 2714480645170248534}
+  - component: {fileID: 4791783144126485082}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -95,20 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-5075137467363483186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3424012882688714860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 149fd256e51676744b43d7d6b927be19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjectileBehaviour
-  speed: 6
-  damage: 2
 --- !u!114 &3763133262327144598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +143,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -200,3 +186,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4791783144126485082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424012882688714860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ded78d971b687b4fb7d438549a620b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinigunBehaviour
+  speed: 6
+  damage: 1
+  time_between_firing: 0.1

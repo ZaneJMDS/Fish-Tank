@@ -13,8 +13,6 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour
 {
     public float speed = 6f;
-    [SerializeField] public int damage = 2;
-    public float time_between_firing = 0.5f;
 
     private CameraBehaviour camera_behaviour;
 

@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30260f691a586648a5998f91ce1f1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitscanBehaviour
-  damage: 2
+  damage: 10
+  time_between_firing: 0.5

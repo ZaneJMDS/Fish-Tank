@@ -8,6 +8,8 @@ File name   :   PlayerMovement.cs
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 [DisallowMultipleComponent] // Unity is stupid, Essentially pragma once
 
@@ -15,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float move_speed = 4f;
     [SerializeField] private int health = 100;
+    public TextMeshProUGUI health_text;
+
     private Rigidbody2D rb; // Player can control this object
     SpriteRenderer sprite_renderer;
     private Vector2 move_input;
@@ -51,17 +55,23 @@ public class PlayerMovement : MonoBehaviour
 
         rb.linearVelocity = move_input * move_speed;
 
-        gameObject.GetComponent<SpriteRenderer>().sprite = full_health;
+        // Update health indicators
+        if (health >= 6)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = full_health;
+        }
 
-        if (health < 5)
+        if (health < 6)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = med_health;
         }
 
-        else if (health < 1)
+        if (health < 3)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = low_health;
         }
+
+        health_text.text = "Health: " + health;
     }
 
     // Move in direction held
@@ -70,14 +80,22 @@ public class PlayerMovement : MonoBehaviour
         move_input = context.ReadValue<Vector2>();
     }
 
-
+    // Player collides with things
     private void OnTriggerEnter2D(Collider2D _other)
     {
+        // PROBABLY DON"T NEED TO USE TAGS
         // Player picks up the bubble on collision
         if (_other.CompareTag("Bubbles"))
         {
-            health += 5;
+            // Max health
+            if (health < 20) { health += 5; }
             Destroy(_other.gameObject);
+        }
+
+        // Player takes damage on collision with enemies
+        if (_other.CompareTag("Enemies"))
+        {
+            health--;
         }
     }
 }

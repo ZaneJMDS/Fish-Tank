@@ -13,7 +13,6 @@ public class EnemyLook : Look
 {
     // Enemy stat field
     [SerializeField] public int health = 10;
-    [SerializeField] private float speed = 2f;
     [SerializeField] private float lerp_speed = 2f;
 
     private Vector3 currentAngle;
@@ -22,7 +21,7 @@ public class EnemyLook : Look
     public GameObject obj_game_manager;
     private GameManager game_manager;
 
-    public GameObject bubble;
+    public GameObject bubble; // Spawns this on death
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,8 +43,20 @@ public class EnemyLook : Look
         // If health is less than or equal to 0 you shall be gone
         if (health <= 0)
         {
+            // CHANGE LATER
+            // Spawn more bubbles if the fish is a loot fish
+            if (true)
+            {
+                Debug.Log("ImSPECIAL");
+                Instantiate(bubble, new(transform.position.x + 2, transform.position.y + 2, transform.position.z), Quaternion.identity);
+                Instantiate(bubble, new(transform.position.x - 2, transform.position.y - 2, transform.position.z), Quaternion.identity);
+            }
+
             // Spawn a bubble where the enemy died
             Instantiate(bubble, transform.position, Quaternion.identity);
+
+            game_manager.AddScore(Random.Range(5, 15));
+
             Destroy(this.gameObject);
         }
     }
@@ -58,11 +69,8 @@ public class EnemyLook : Look
         // If hit by a projectile, decrease health and increase score
         if (_other.CompareTag("Projectile"))
         {
-            // Communicate with AddScore method and add random score between 5-15
             Destroy(_other.gameObject);
-            game_manager.AddScore(Random.Range(5, 15));
-
-            health -= _other.gameObject.GetComponent<ProjectileBehaviour>().damage; // WHY UNITY?
+            health -= _other.gameObject.GetComponent<MinigunBehaviour>().damage; // TODO SUPPORT OTHER WEAPONS
         }
     }
 }

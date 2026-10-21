@@ -45,7 +45,7 @@ public class PlayerLook : Look
         float angle_rad = (currentAngle.z + 90) * Mathf.Deg2Rad;
 
         // Current direction
-        Vector2 current_direction = new Vector2(Mathf.Cos(angle_rad), Mathf.Sin(angle_rad));
+        Vector2 current_direction = new(Mathf.Cos(angle_rad), Mathf.Sin(angle_rad));
 
         // Draw a line from the player to the mouse
         target_line.SetPosition(0, transform.position);
@@ -56,7 +56,7 @@ public class PlayerLook : Look
         if (!primary_fire)
         {
             primary_timer += Time.deltaTime;
-            if (primary_timer > projectile.GetComponent<ProjectileBehaviour>().time_between_firing)
+            if (primary_timer > projectile.GetComponent<MinigunBehaviour>().time_between_firing)
             {
                 primary_fire = true;
                 primary_timer = 0f;
@@ -75,7 +75,7 @@ public class PlayerLook : Look
         }
 
         // Left MB held
-        if (Input.GetMouseButton(0) && primary_fire)
+        if (Input.GetMouseButton(0) && primary_fire && !Input.GetMouseButton(1))
         {
             primary_fire = false;
 
@@ -85,25 +85,22 @@ public class PlayerLook : Look
         }
 
         // Right MB held
-        if (Input.GetMouseButton(1) && secondary_fire)
+        if (Input.GetMouseButton(1) && secondary_fire && !Input.GetMouseButton(0))
         {
             secondary_fire = false;
 
-            // Summon a hitscan at the player's position and where they are facing
-            // Instantiate(hitscan, transform.position, transform.rotation);
+            // Hitscan
+            RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, current_direction);
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, current_direction);
-
-            // TODO UPDATE
-            if (hit)
+            // PIERCING LETS FREAKING GO
+            for (int i = 0; i < hit.Length; i++)
             {
-                Debug.Log("Hit" + hit.collider.gameObject.name);
-                hit.collider.gameObject.GetComponent<EnemyLook>().health--; // Decrease the enemy's health if hit
-            }
-
-            else
-            {
-                Debug.Log("Miss");
+                // Only care about enemies
+                if (hit[i].collider.CompareTag("Enemies"))
+                {
+                    Debug.Log("Hit" + hit[i].collider.gameObject.name);
+                    hit[i].collider.gameObject.GetComponent<EnemyLook>().health -= hitscan.GetComponent<HitscanBehaviour>().damage; // Decrease the enemy's health if hit
+                }
             }
         }
     }
