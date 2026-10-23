@@ -6,10 +6,11 @@ Description :   Player moves around / other tank stuff
 File name   :   PlayerMovement.cs
 **************************************************************************/
 
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 [DisallowMultipleComponent] // Unity is stupid, Essentially pragma once
 
@@ -58,19 +59,25 @@ public class PlayerMovement : MonoBehaviour
         // Update health indicators
         if (health >= 6)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = full_health;
+            sprite_renderer.sprite = full_health;
         }
 
         if (health < 6)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = med_health;
+            sprite_renderer.sprite = med_health;
         }
 
         if (health < 3)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = low_health;
+            sprite_renderer.sprite = low_health;
         }
 
+        if (health < 1)
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
+        // Print health to screen
         health_text.text = "Health: " + health;
     }
 
@@ -83,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
     // Player collides with things
     private void OnTriggerEnter2D(Collider2D _other)
     {
-        // PROBABLY DON"T NEED TO USE TAGS
         // Player picks up the bubble on collision
         if (_other.CompareTag("Bubbles"))
         {

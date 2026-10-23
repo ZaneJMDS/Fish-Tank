@@ -85,12 +85,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 961611672804404278, guid: cc89e40462ad9c940aa7246773e529d9, type: 3}
+  m_Sprite: {fileID: -1229858627709956937, guid: 9ac3179d49b582e4cbf12f03e4bda826, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 14.3, y: 9.89}
+  m_Size: {x: 0.32999998, y: 4.0404325}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -151,8 +151,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 14.3, y: 9.89}
-    newSize: {x: 14.3, y: 9.89}
+    oldSize: {x: 6.3106756, y: 3.2499998}
+    newSize: {x: 0.32999998, y: 4.0404325}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -198,6 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ded78d971b687b4fb7d438549a620b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MinigunBehaviour
-  speed: 6
+  speed: 8
   damage: 1
   time_between_firing: 0.1

@@ -5,7 +5,7 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    public int score;
+    public static int score;
     [SerializeField] TextMeshProUGUI score_text;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         score_text.text = "Score: " + score;
     }
 
-    public void AddScore(int _score)
+    public static void AddScore(int _score)
     {
         score += _score;
     }

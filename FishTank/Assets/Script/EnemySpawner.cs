@@ -12,10 +12,11 @@ public class EnemySpawner : MonoBehaviour
     GameObject[] enemies;
     int enemy_count = 0;
 
+    int rand;
+
     // Update is called once per frame
     void Update()
     {
-
         // Count enemies
         enemies = GameObject.FindGameObjectsWithTag("Enemies");
         enemy_count = enemies.Length;
@@ -26,8 +27,24 @@ public class EnemySpawner : MonoBehaviour
         if (timer >= interval && enemy_count < 10)
         {
             timer = 0f;
-            Instantiate(basic_enemy, new Vector3(Random.Range(-5f, 5f), Random.Range(-6f, 6f), 0), Quaternion.identity);
-            Instantiate(loot_fish, new Vector3(Random.Range(-5f, 5f), Random.Range(-6f, 6f), 0), Quaternion.identity);
+
+            // Pick a random enemy to spawn
+            // First number is INCLUSIVE, second is EXCLUSIVE!
+            rand = Random.Range(0, 2);
+
+            // Basic
+            if (rand == 0)
+            {
+                // Spawn from a random x-val on top of the screen
+                Instantiate(basic_enemy, new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
+            }
+
+            // Loot fish
+            else if (rand == 1)
+            {
+                // Spawn from a random x-val on top of the screen
+                Instantiate(loot_fish, new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
+            }
         }
     }
 }

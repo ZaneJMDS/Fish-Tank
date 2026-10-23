@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class Look : MonoBehaviour
 {
-    // Face a specific target
+    // Face a specific target by getting the angle
     public float FaceTarget(Vector2 _direction)
     {
         float angle_rad = Mathf.Atan2(_direction.y, _direction.x); // Find Z

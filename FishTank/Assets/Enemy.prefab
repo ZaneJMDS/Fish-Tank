@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1028782882524998893}
   - component: {fileID: 7419210008591843273}
   - component: {fileID: 943631122088211979}
+  - component: {fileID: -1527349262388078844}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemies
@@ -106,11 +107,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLook
   health: 10
-  speed: 2
   lerp_speed: 2
   player: {fileID: 6261708026207182413, guid: 6edaa287e897c864abfa1c534a2a0305, type: 3}
-  obj_game_manager: {fileID: 2658546338673912770, guid: bee14adf84ea12c439d5669b32b5de82, type: 3}
   bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
+  projectile: {fileID: 3424012882688714860, guid: a4d6a89103ed41448ba8c672f312621b, type: 3}
 --- !u!61 &943631122088211979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,3 +157,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-1527349262388078844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396747204816518508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea0322d20ddfd749a9991193f19e873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  speed: 2
