@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject loot_fish;
     
     [SerializeField] private float interval; // Time between spawns
+    [SerializeField] private int level_enemies = 0; // How many enemies the player will fight before going to the next level
     private float timer = 0f;
 
     // Count enemies
@@ -24,9 +25,17 @@ public class EnemySpawner : MonoBehaviour
         // Spawn enemies on a timer
         timer += Time.deltaTime;
 
+        // Move to the next level
+        if (level_enemies > 20)
+        {
+
+        }
+
+        // Only spawn if there are less than 10 enemies on screen
         if (timer >= interval && enemy_count < 10)
         {
             timer = 0f;
+            level_enemies++;
 
             // Pick a random enemy to spawn
             // First number is INCLUSIVE, second is EXCLUSIVE!

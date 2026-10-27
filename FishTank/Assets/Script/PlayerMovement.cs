@@ -17,8 +17,9 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float move_speed = 4f;
-    [SerializeField] private int health = 100;
+    [SerializeField] private float health;
     public TextMeshProUGUI health_text;
+    public Slider health_slider;
 
     private Rigidbody2D rb; // Player can control this object
     SpriteRenderer sprite_renderer;
@@ -48,6 +49,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Decrease health slowly over time
+        if (health > 1f)
+        {
+            health -= 0.001f;
+        }
+
         // If out of bounds of the camera, player can't move in that direction
         if (transform.position.x - sprite_radius < camera_behaviour.cameraRect.xMin && move_input.x < 0) { move_input.x = 0; } // Left
         if (transform.position.x + sprite_radius > camera_behaviour.cameraRect.xMax && move_input.x > 0) { move_input.x = 0; } // Right
@@ -57,28 +64,31 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = move_input * move_speed;
 
         // Update health indicators
-        if (health >= 6)
+        if (health >= 6f)
         {
             sprite_renderer.sprite = full_health;
         }
 
-        if (health < 6)
+        if (health < 6f)
         {
             sprite_renderer.sprite = med_health;
         }
 
-        if (health < 3)
+        if (health < 3f)
         {
             sprite_renderer.sprite = low_health;
         }
 
-        if (health < 1)
+        // Player is dead
+        if (health < 0f)
         {
             SceneManager.LoadScene("Menu");
         }
 
         // Print health to screen
-        health_text.text = "Health: " + health;
+        health_text.text = "Health: " + (int)health;
+
+        health_slider.value = health;
     }
 
     // Move in direction held
