@@ -27,7 +27,7 @@ public class ProjectileBehaviour : MonoBehaviour
     void Update()
     {
         // Projectile move forward
-        transform.position += -transform.right * Time.deltaTime * speed;
+        transform.position += speed * Time.deltaTime * -transform.right;
 
         // Destroy the projectile if it goes offscreen
         if (transform.position.x < camera_behaviour.cameraRect.xMin) { Destroy(this.gameObject); } // Left

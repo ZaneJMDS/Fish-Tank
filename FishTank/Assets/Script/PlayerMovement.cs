@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float move_speed = 4f;
     [SerializeField] private float health;
-    public TextMeshProUGUI health_text;
     public Slider health_slider;
 
     private Rigidbody2D rb; // Player can control this object
@@ -52,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         // Decrease health slowly over time
         if (health > 1f)
         {
-            health -= 0.001f;
+            health -= 0.005f;
         }
 
         // If out of bounds of the camera, player can't move in that direction
@@ -79,15 +78,13 @@ public class PlayerMovement : MonoBehaviour
             sprite_renderer.sprite = low_health;
         }
 
-        // Player is dead
+        // Player is dead, take them to start menu
         if (health < 0f)
         {
             SceneManager.LoadScene("Menu");
         }
 
-        // Print health to screen
-        health_text.text = "Health: " + (int)health;
-
+        // Print health to slider
         health_slider.value = health;
     }
 

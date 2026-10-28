@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     int enemy_count = 0;
 
     int rand;
+    bool level_complete = false;
 
     // Update is called once per frame
     void Update()
@@ -28,7 +29,8 @@ public class EnemySpawner : MonoBehaviour
         // Move to the next level
         if (level_enemies > 20)
         {
-
+            level_complete = true;
+            Debug.Log("You win");
         }
 
         // Only spawn if there are less than 10 enemies on screen

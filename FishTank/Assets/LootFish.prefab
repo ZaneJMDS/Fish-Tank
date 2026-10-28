@@ -108,9 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLook
   health: 10
   lerp_speed: 2
-  player: {fileID: 6261708026207182413, guid: 6edaa287e897c864abfa1c534a2a0305, type: 3}
   bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
   projectile: {fileID: 3424012882688714860, guid: a4d6a89103ed41448ba8c672f312621b, type: 3}
+  hit_explosion: {fileID: 1986321831257243202, guid: 81008ad41d1d68544ac9633107989b9f, type: 3}
 --- !u!61 &6451369817606679183
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -19,11 +19,12 @@ public class EnemyLook : Look
     private float timer;
 
     private Vector3 currentAngle;
-    public GameObject player; // Needs to know where the player is
+    private GameObject player; // Needs to know where the player is
 
     public GameObject bubble; // Spawns this on death
 
     public GameObject projectile;
+    public GameObject hit_explosion;
 
     void Start()
     {
@@ -45,6 +46,8 @@ public class EnemyLook : Look
 
             // Summon a projectile at the player's position and where they are facing
             Quaternion bullet_offset = transform.rotation * Quaternion.Euler(0, 0, 270 + Random.Range(-30, 30));
+
+            // Current projectile will kill enemy
             // Instantiate(projectile, transform.position, bullet_offset);
 
         }
@@ -75,6 +78,9 @@ public class EnemyLook : Look
         {
             Destroy(_other.gameObject);
             health -= _other.gameObject.GetComponent<MinigunBehaviour>().damage; // TODO SUPPORT OTHER WEAPONS
+
+            // Summon explosion
+            Instantiate(hit_explosion, transform);
         }
     }
 }

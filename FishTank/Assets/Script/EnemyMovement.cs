@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private int speed;
+    [SerializeField] private float speed;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += speed * Time.deltaTime * -transform.forward;
+        Vector3 velocity = new Vector3(0, -1, 0); 
+        velocity *= speed;
+        transform.position += velocity * Time.deltaTime;
     }
 }
