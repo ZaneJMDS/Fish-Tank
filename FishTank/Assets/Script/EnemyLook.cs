@@ -11,15 +11,17 @@ using UnityEngine;
 
 public class EnemyLook : Look
 {
-    // Enemy stat field
-    [SerializeField] public int health = 10;
-    [SerializeField] private float lerp_speed = 2f;
+    // Enemy stat field - Customise in the inspector
+    [SerializeField] public int health;
+    [SerializeField] private float lerp_speed;
+    [SerializeField] private int enemy_score;
+    [SerializeField] private int bubbles_dropped;
 
     // For projectiles
     private float timer;
 
     private Vector3 currentAngle;
-    private GameObject player; // Needs to know where the player is
+    private GameObject player; // Needs to look at the player
 
     public GameObject bubble; // Spawns this on death
 
@@ -55,16 +57,13 @@ public class EnemyLook : Look
         // If health is less than or equal to 0 you shall be gone
         if (health <= 0)
         {
-            // TODO Spawn more bubbles if the fish is a loot fish
-            if (true)
+            // Spawn bubbles near where the enemy died
+            for (int i = 0; i < bubbles_dropped; i++)
             {
-                Instantiate(bubble, new(transform.position.x + Random.Range(-1, 1), transform.position.y + Random.Range(-1, 1), transform.position.z), Quaternion.identity);
+                Instantiate(bubble, new Vector3(transform.position.x + Random.Range(-1, 2), transform.position.y + Random.Range(-1, 2), transform.position.z), Quaternion.identity);
             }
 
-            // Spawn a bubble where the enemy died
-            Instantiate(bubble, transform.position, Quaternion.identity);
-
-            GameManager.AddScore(Random.Range(5, 15));
+            GameManager.AddScore(enemy_score);
 
             Destroy(this.gameObject);
         }
@@ -77,6 +76,8 @@ public class EnemyLook : Look
         if (_other.CompareTag("Projectile"))
         {
             Destroy(_other.gameObject);
+            Instantiate(hit_explosion, transform);
+
             health -= _other.gameObject.GetComponent<MinigunBehaviour>().damage; // TODO SUPPORT OTHER WEAPONS
 
             // Summon explosion

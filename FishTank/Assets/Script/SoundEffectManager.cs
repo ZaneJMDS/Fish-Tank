@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class SoundEffectManager : MonoBehaviour
 {
     private static SoundEffectManager instance;
-
     private static AudioSource audio_source;
     private static SoundEffectLibrary SoundEffectLibrary;
     [SerializeField] private Slider sfx_slider;
@@ -22,15 +21,17 @@ public class SoundEffectManager : MonoBehaviour
             instance = this;
             audio_source = GetComponent<AudioSource>();
             SoundEffectLibrary = GetComponent<SoundEffectLibrary>();
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // Keeps object between scenes
         }
 
+        // Destroy any duplicates
         else
         {
             Destroy(gameObject);
         }
     }
 
+    // Play random sound from sound array
     public static void Play(string _name)
     {
         AudioClip audio_clip = SoundEffectLibrary.GetRandomClip(_name);

@@ -106,8 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf459c471923de647bbc9d9f99708070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLook
-  health: 10
+  health: 20
   lerp_speed: 2
+  enemy_score: 15
+  bubbles_dropped: 2
   bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
   projectile: {fileID: 3424012882688714860, guid: a4d6a89103ed41448ba8c672f312621b, type: 3}
   hit_explosion: {fileID: 1986321831257243202, guid: 81008ad41d1d68544ac9633107989b9f, type: 3}

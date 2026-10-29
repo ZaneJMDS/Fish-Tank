@@ -20,7 +20,7 @@ public class MusicManager : MonoBehaviour
         {
             instance = this;
             audio_source = GetComponent<AudioSource>();
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // Keeps object between scenes
         }
 
         else { Destroy(gameObject); }

@@ -1,11 +1,11 @@
 using UnityEngine;
 
+// Get edge of the play area
 public class CameraBehaviour : MonoBehaviour
 {
     public Rect cameraRect;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         // Camera restrictions
         Vector3 bottomLeft = Camera.main.ScreenToWorldPoint(Vector3.zero);

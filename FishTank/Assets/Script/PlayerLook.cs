@@ -14,25 +14,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerLook : Look
 {
-    // Sprites for guns
-    public GameObject Gun;
-    private SpriteRenderer gun_sprite_renderer;
-
-    public Sprite BasicGun;
-    public Sprite MiniGun;
-    public Sprite LaserGun;
-
     // For Lerp
     [SerializeField] private float lerp_speed = 1f;
     private Vector3 currentAngle;
 
     // Line
     public LineRenderer target_line;
-
-    void Start()
-    {
-        gun_sprite_renderer = Gun.GetComponent<SpriteRenderer>(); // Change the gun sprite
-    }
 
     // Update is called once per frame
     void Update()

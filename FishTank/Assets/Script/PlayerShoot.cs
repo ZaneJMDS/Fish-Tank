@@ -26,22 +26,28 @@ public class PlayerShoot : MonoBehaviour
     private float primary_timer;
     private float secondary_timer;
 
-    private SpriteRenderer turret_fire_sprite_renderer;
     private Vector3 currentAngle;
+
+    // Change sprites for guns
+    public GameObject Gun;
+    private SpriteRenderer gun_sprite_renderer;
+    [SerializeField] Sprite[] gun_sprites;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Find the things
+        // Find the actions for input
         attack_action = InputSystem.actions.FindAction("Attack");
         switch_action = InputSystem.actions.FindAction("Interact");
-        turret_fire_sprite_renderer =  GetComponent<SpriteRenderer>();
+
+        gun_sprite_renderer = Gun.GetComponent<SpriteRenderer>(); // Change the gun sprite
     }
 
     // Update is called once per frame
     void Update()
     {
         // Convert current rotation to direction
+        currentAngle = transform.eulerAngles; // Update the current angle each frame
         float angle_rad = (currentAngle.z + 90) * Mathf.Deg2Rad;
         Vector2 current_direction = new(Mathf.Cos(angle_rad), Mathf.Sin(angle_rad));
 
@@ -51,7 +57,7 @@ public class PlayerShoot : MonoBehaviour
             primary_timer += Time.deltaTime;
             if (primary_timer > projectile.GetComponent<MinigunBehaviour>().time_between_firing)
             {
-                turret_fire_sprite_renderer.enabled = false;
+                GetComponent<SpriteRenderer>().enabled = false;
                 primary_fire = true;
                 primary_timer = 0f;
             }
@@ -63,7 +69,7 @@ public class PlayerShoot : MonoBehaviour
             secondary_timer += Time.deltaTime;
             if (secondary_timer > HitscanBehaviour.time_between_firing)
             {
-                turret_fire_sprite_renderer.enabled = false;
+                GetComponent<SpriteRenderer>().enabled = false;
                 secondary_fire = true;
                 secondary_timer = 0f;
             }
@@ -73,9 +79,9 @@ public class PlayerShoot : MonoBehaviour
         if (attack_action.IsPressed() && primary_fire && !switch_action.IsPressed())
         {
             primary_fire = false;
-            turret_fire_sprite_renderer.enabled = true;
 
-            // gun_sprite_renderer.sprite = MiniGun;
+            GetComponent<SpriteRenderer>().enabled = true;
+            gun_sprite_renderer.sprite = gun_sprites[1]; // Minigun
 
             // Summon a projectile at the player's position and where they are facing
             Quaternion bullet_offset = transform.rotation * Quaternion.Euler(0, 0, 270);
@@ -86,9 +92,9 @@ public class PlayerShoot : MonoBehaviour
         if (switch_action.IsPressed() && secondary_fire && !attack_action.IsPressed())
         {
             secondary_fire = false;
-            turret_fire_sprite_renderer.enabled = true;
 
-            // gun_sprite_renderer.sprite = LaserGun;
+            GetComponent<SpriteRenderer>().enabled = true;
+            gun_sprite_renderer.sprite = gun_sprites[2]; // Laser gun
 
             // Hitscan holding all enemies hit
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, current_direction);
@@ -99,7 +105,7 @@ public class PlayerShoot : MonoBehaviour
                 // Only care about enemies
                 if (hits[i].collider.CompareTag("Enemies"))
                 {
-                    Debug.Log("Hit" + hits[i].collider.gameObject.name);
+                    Debug.Log("Hit" + hits[i].collider.gameObject.name); // Make sure the correct object is getting hit
                     hits[i].collider.gameObject.GetComponent<EnemyLook>().health -= HitscanBehaviour.damage; // Decrease the enemy's health if hit
                 }
             }

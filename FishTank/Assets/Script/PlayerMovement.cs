@@ -27,13 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject Bubble; // Bubble exists in the world
 
-    private CameraBehaviour camera_behaviour;
+    private CameraBehaviour camera_behaviour; // So player dosn't go out of bounds
 
-    // Health sprites
-    public Sprite full_health;
-    public Sprite med_health;
-    public Sprite low_health;
-
+    [SerializeField] Sprite[] player_sprites;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -63,19 +59,22 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = move_input * move_speed;
 
         // Update health indicators
+        // Full health
         if (health >= 6f)
         {
-            sprite_renderer.sprite = full_health;
+            sprite_renderer.sprite = player_sprites[0];
         }
 
+        // Medium health
         if (health < 6f)
         {
-            sprite_renderer.sprite = med_health;
+            sprite_renderer.sprite = player_sprites[1];
         }
 
+        // Low health
         if (health < 3f)
         {
-            sprite_renderer.sprite = low_health;
+            sprite_renderer.sprite = player_sprites[2];
         }
 
         // Player is dead, take them to start menu
