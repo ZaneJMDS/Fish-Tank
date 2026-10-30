@@ -200,4 +200,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileBehaviour
   speed: 6
   damage: 1
-  time_between_firing: 0.05
+  time_between_firing: 0.1

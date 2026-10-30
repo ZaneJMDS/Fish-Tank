@@ -105,7 +105,6 @@ public class PlayerShoot : MonoBehaviour
                 // Only care about enemies
                 if (hits[i].collider.CompareTag("Enemies"))
                 {
-                    Debug.Log("Hit" + hits[i].collider.gameObject.name); // Make sure the correct object is getting hit
                     hits[i].collider.gameObject.GetComponent<EnemyLook>().health -= HitscanBehaviour.damage; // Decrease the enemy's health if hit
                     hits[i].collider.gameObject.GetComponent<EnemyLook>().SummonHitExplosion();
                 }

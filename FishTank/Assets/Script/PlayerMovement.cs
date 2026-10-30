@@ -17,7 +17,9 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float move_speed = 4f;
-    [SerializeField] private float health;
+    private float health;
+    private const float max_health = 100f;
+
     public Slider health_slider;
 
     private Rigidbody2D rb; // Player can control this object
@@ -34,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        health = max_health;
+
         rb = GetComponent<Rigidbody2D>();
         sprite_renderer = GetComponent<SpriteRenderer>();
         sprite_radius = 0.05f * sprite_renderer.sprite.bounds.extents.x; // Unity's dumb radius math converting pixels to screen space
@@ -96,18 +100,16 @@ public class PlayerMovement : MonoBehaviour
     // Player collides with things
     private void OnTriggerEnter2D(Collider2D _other)
     {
-        // Player picks up the bubble on collision
-        if (_other.CompareTag("Bubbles"))
-        {
-            // Max health
-            if (health < 20) { health += 5; }
-            Destroy(_other.gameObject);
-        }
-
         // Player takes damage on collision with enemies
         if (_other.CompareTag("Enemies"))
         {
             health--;
         }
+    }
+
+    // Change player health
+    public void GainHealth(float _health)
+    {
+        if (health < max_health) { health += _health; }
     }
 }

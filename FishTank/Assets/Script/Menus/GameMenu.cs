@@ -16,7 +16,6 @@ public class GameMenu : MonoBehaviour
         SceneManager.LoadScene(game_scene_name);
     }
 
-    // Currently dosn't do anything
     public void Settings()
     {
 
