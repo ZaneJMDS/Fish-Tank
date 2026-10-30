@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Its only purpose is to die
 public class HitExplosionBehaviour : MonoBehaviour
 {
     float alive_timer = 0;

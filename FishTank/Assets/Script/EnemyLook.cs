@@ -42,7 +42,7 @@ public class EnemyLook : Look
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(currentAngle.z, FaceTarget(target_direction), Time.deltaTime * lerp_speed));
 
         timer += Time.deltaTime;
-        if (timer > projectile.GetComponent<MinigunBehaviour>().time_between_firing)
+        if (timer > projectile.GetComponent<ProjectileBehaviour>().time_between_firing)
         {
             timer = 0f;
 
@@ -76,12 +76,14 @@ public class EnemyLook : Look
         if (_other.CompareTag("Projectile"))
         {
             Destroy(_other.gameObject);
-            Instantiate(hit_explosion, transform);
+            SummonHitExplosion();
 
-            health -= _other.gameObject.GetComponent<MinigunBehaviour>().damage; // TODO SUPPORT OTHER WEAPONS
-
-            // Summon explosion
-            Instantiate(hit_explosion, transform);
+            health -= _other.gameObject.GetComponent<ProjectileBehaviour>().damage;
         }
+    }
+    
+    public void SummonHitExplosion()
+    {
+        Instantiate(hit_explosion, transform); // Summon explosion
     }
 }

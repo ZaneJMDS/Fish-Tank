@@ -1,16 +1,13 @@
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
-{
-    public GameObject basic_enemy;
-    public GameObject loot_fish;
-    
+{   
     [SerializeField] private float interval; // Time between spawns
     [SerializeField] private int level_enemies = 0; // How many enemies the player will fight before going to the next level
     private float timer = 0f;
 
     // Count enemies
-    GameObject[] enemies;
+    public GameObject[] enemies;
     int enemy_count = 0;
 
     int rand;
@@ -19,8 +16,6 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Count enemies
-        enemies = GameObject.FindGameObjectsWithTag("Enemies");
         enemy_count = enemies.Length;
 
         // Spawn enemies on a timer
@@ -40,21 +35,27 @@ public class EnemySpawner : MonoBehaviour
             level_enemies++;
 
             // Pick a random enemy to spawn
-            // First number is INCLUSIVE, second is EXCLUSIVE!
-            rand = Random.Range(0, 2);
+            rand = Random.Range(0, 3);
 
             // Basic
             if (rand == 0)
             {
                 // Spawn from a random x-val on top of the screen
-                Instantiate(basic_enemy, new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
+                Instantiate(enemies[0], new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
             }
 
             // Loot fish
             else if (rand == 1)
             {
                 // Spawn from a random x-val on top of the screen
-                Instantiate(loot_fish, new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
+                Instantiate(enemies[1], new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
+            }
+
+            // Tank
+            else if (rand == 2)
+            {
+                // Spawn from a random x-val on top of the screen
+                Instantiate(enemies[2], new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
             }
         }
     }

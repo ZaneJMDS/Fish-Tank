@@ -3,6 +3,7 @@ using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
 using System;
 
+// Class to update score
 public class GameManager : MonoBehaviour
 {
     public static int score;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         score_text.text = "Score: " + score;
     }
 
+    // Add score to current score
     public static void AddScore(int _score)
     {
         score += _score;

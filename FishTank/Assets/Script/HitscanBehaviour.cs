@@ -9,6 +9,7 @@ File name   :   HitscanBehaviour.cs
 
 using UnityEngine;
 
+// Stats for hitscan weapons
 public class HitscanBehaviour : MonoBehaviour
 {
     // Stat field
@@ -19,12 +20,5 @@ public class HitscanBehaviour : MonoBehaviour
     void Start()
     {
         SoundEffectManager.Play("Projectile"); // Play projectile sounds when object is called
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // When done destroy this game object
-        Destroy(this.gameObject);
     }
 }

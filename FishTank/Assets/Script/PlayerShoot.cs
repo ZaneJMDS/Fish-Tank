@@ -55,7 +55,7 @@ public class PlayerShoot : MonoBehaviour
         if (!primary_fire)
         {
             primary_timer += Time.deltaTime;
-            if (primary_timer > projectile.GetComponent<MinigunBehaviour>().time_between_firing)
+            if (primary_timer > projectile.GetComponent<ProjectileBehaviour>().time_between_firing)
             {
                 GetComponent<SpriteRenderer>().enabled = false;
                 primary_fire = true;
@@ -107,6 +107,7 @@ public class PlayerShoot : MonoBehaviour
                 {
                     Debug.Log("Hit" + hits[i].collider.gameObject.name); // Make sure the correct object is getting hit
                     hits[i].collider.gameObject.GetComponent<EnemyLook>().health -= HitscanBehaviour.damage; // Decrease the enemy's health if hit
+                    hits[i].collider.gameObject.GetComponent<EnemyLook>().SummonHitExplosion();
                 }
             }
         }

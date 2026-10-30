@@ -1348,10 +1348,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a2b1d656f5dc24c8d620ba9c052d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  basic_enemy: {fileID: 7396747204816518508, guid: 85a3fb9338f82434ca4b7d1c6a4f592b, type: 3}
-  loot_fish: {fileID: 8662438956299635526, guid: 10336465ccb408648bd19aa6b09a31e7, type: 3}
   interval: 1
   level_enemies: 0
+  enemies:
+  - {fileID: 7396747204816518508, guid: 85a3fb9338f82434ca4b7d1c6a4f592b, type: 3}
+  - {fileID: 8662438956299635526, guid: 10336465ccb408648bd19aa6b09a31e7, type: 3}
+  - {fileID: 8662438956299635526, guid: 55261180274e4f4418a48a7d2d65d4a3, type: 3}
 --- !u!4 &1529501972
 Transform:
   m_ObjectHideFlags: 0
@@ -1971,7 +1973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   move_speed: 4
-  health: 10
+  health: 100
   health_slider: {fileID: 353533442}
   Bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
   player_sprites:
