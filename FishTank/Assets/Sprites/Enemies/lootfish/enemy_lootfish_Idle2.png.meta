@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 99f5fb313736cf54397ce94d375d484e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6325266398798686462
+    second: enemy_lootfish_Idle2_0
+  - first:
+      213: -312920311415762967
+    second: enemy_lootfish_Idle2_1
+  - first:
+      213: -539040854032980212
+    second: enemy_lootfish_Idle2_2
+  - first:
+      213: 9110773111895845851
+    second: enemy_lootfish_Idle2_3
+  - first:
+      213: 7892613635173385383
+    second: enemy_lootfish_Idle2_4
+  - first:
+      213: 4283801463885869865
+    second: enemy_lootfish_Idle2_5
+  - first:
+      213: -414227509975357465
+    second: enemy_lootfish_Idle2_6
+  - first:
+      213: 4098061222823836378
+    second: enemy_lootfish_Idle2_7
+  - first:
+      213: 3050209640978169448
+    second: enemy_lootfish_Idle2_8
+  - first:
+      213: 4215073585854003408
+    second: enemy_lootfish_Idle2_9
+  - first:
+      213: 203214777926755517
+    second: enemy_lootfish_Idle2_10
+  - first:
+      213: -5028643544348927530
+    second: enemy_lootfish_Idle2_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_0
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 1848
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef82c1ae64cd7c750800000000000000
+      internalID: 6325266398798686462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_1
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 1850
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ef0f0b72a848abf0800000000000000
+      internalID: -312920311415762967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_2
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 1850
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c07e0fff231f488f0800000000000000
+      internalID: -539040854032980212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_3
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 719
+        width: 1309
+        height: 1073
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb6bb3dfd7ff6e70800000000000000
+      internalID: 9110773111895845851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_4
+      rect:
+        serializedVersion: 2
+        x: 2193
+        y: 1426
+        width: 145
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a40ae9c842388d60800000000000000
+      internalID: 7892613635173385383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_5
+      rect:
+        serializedVersion: 2
+        x: 2293
+        y: 1230
+        width: 72
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 923373f1cbe137b30800000000000000
+      internalID: 4283801463885869865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_6
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1160
+        width: 112
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e769bb364e504af0800000000000000
+      internalID: -414227509975357465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_7
+      rect:
+        serializedVersion: 2
+        x: 2303
+        y: 1072
+        width: 85
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adab73e38fc3fd830800000000000000
+      internalID: 4098061222823836378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_8
+      rect:
+        serializedVersion: 2
+        x: 2327
+        y: 985
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86eb9fcf185845a20800000000000000
+      internalID: 3050209640978169448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_9
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 737
+        width: 52
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d8b5fa0813fe7a30800000000000000
+      internalID: 4215073585854003408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_10
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 708
+        width: 30
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db42f6b83c6f1d200800000000000000
+      internalID: 203214777926755517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lootfish_Idle2_11
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 664
+        width: 28
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d9550dd65ba63ab0800000000000000
+      internalID: -5028643544348927530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      enemy_lootfish_Idle2_0: 6325266398798686462
+      enemy_lootfish_Idle2_1: -312920311415762967
+      enemy_lootfish_Idle2_10: 203214777926755517
+      enemy_lootfish_Idle2_11: -5028643544348927530
+      enemy_lootfish_Idle2_2: -539040854032980212
+      enemy_lootfish_Idle2_3: 9110773111895845851
+      enemy_lootfish_Idle2_4: 7892613635173385383
+      enemy_lootfish_Idle2_5: 4283801463885869865
+      enemy_lootfish_Idle2_6: -414227509975357465
+      enemy_lootfish_Idle2_7: 4098061222823836378
+      enemy_lootfish_Idle2_8: 3050209640978169448
+      enemy_lootfish_Idle2_9: 4215073585854003408
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
