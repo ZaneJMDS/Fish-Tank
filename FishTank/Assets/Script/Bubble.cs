@@ -1,16 +1,15 @@
+/***********************************************************************
+Author      :	BMO dev
+Description :   Bubble pickup behaviour
+**************************************************************************/
+
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
     bool has_target;
     Vector3 target_position;
-    [SerializeField] public Rigidbody2D rb;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Rigidbody2D rb;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +21,7 @@ public class Bubble : MonoBehaviour
         }
     }
 
+    // The location the bubble will move towards
     public void SetTarget(Vector3 _position)
     {
         target_position = _position;

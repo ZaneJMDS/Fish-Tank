@@ -1,3 +1,8 @@
+/***********************************************************************
+Author      :	BMO dev
+Description :   Player pickup behaviour
+**************************************************************************/
+
 using UnityEngine;
 
 public class Collector : MonoBehaviour
@@ -9,8 +14,15 @@ public class Collector : MonoBehaviour
         if (_other.CompareTag("Bubbles"))
         {
             // Increase health
-            // PlayerMovement.GainHealth(5f);
+            transform.parent.GetComponent<PlayerMovement>().GainHealth(5f);
             Destroy(_other.gameObject);
+        }
+
+        // Player takes damage on collision with enemies
+        if (_other.CompareTag("Enemies"))
+        {
+            // Decrease health
+            transform.parent.GetComponent<PlayerMovement>().GainHealth(-2f);
         }
     }
 }

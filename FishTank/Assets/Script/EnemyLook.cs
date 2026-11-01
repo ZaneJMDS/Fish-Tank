@@ -84,6 +84,6 @@ public class EnemyLook : Look
     
     public void SummonHitExplosion()
     {
-        Instantiate(hit_explosion, transform); // Summon explosion
+        Instantiate(hit_explosion, transform.position, transform.rotation); // Summon explosion
     }
 }

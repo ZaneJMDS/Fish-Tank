@@ -942,8 +942,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -2.21, y: 0.42}
-  m_Radius: 2.56
+  m_Offset: {x: -2.0893044, y: 0.7065296}
+  m_Radius: 3.2369008
 --- !u!114 &927186643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,6 +1494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1678394571}
   - component: {fileID: 1678394570}
+  - component: {fileID: 1678394572}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1569,12 +1570,24 @@ Transform:
   m_GameObject: {fileID: 1678394569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 0.03, z: 0}
-  m_LocalScale: {x: 1.88, y: 1.88, z: 1.88}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1.811192, y: 1.811192, z: 1.811192}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1678394572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678394569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef0c48185e3575418509b7bf010dcaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrollingBackground
 --- !u!1 &1942608648
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private CameraBehaviour camera_behaviour; // So player dosn't go out of bounds
 
-    [SerializeField] Sprite[] player_sprites;
+    [SerializeField] Sprite[] player_sprites; // Switch between health sprites
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -95,16 +95,6 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         move_input = context.ReadValue<Vector2>();
-    }
-
-    // Player collides with things
-    private void OnTriggerEnter2D(Collider2D _other)
-    {
-        // Player takes damage on collision with enemies
-        if (_other.CompareTag("Enemies"))
-        {
-            health--;
-        }
     }
 
     // Change player health

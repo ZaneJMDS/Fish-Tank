@@ -1,3 +1,9 @@
+/***********************************************************************
+Author      :	Zane Jackson
+Studio      :	FishTank games
+Description :   Keeps track of score / high score
+**************************************************************************/
+
 using System;
 using TMPro;
 using UnityEngine;
@@ -9,6 +15,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class GameManager : MonoBehaviour
 {
     public static int score;
+    public static int high_score;
     [SerializeField] TextMeshProUGUI score_text;
     InputAction pause_action;
 
@@ -23,6 +30,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         score_text.text = "Score: " + score;
+
+        // New high score
+        if (score > high_score)
+        {
+            high_score = score;
+        }
 
         // Quit / pause
         if (Input.GetKeyDown(KeyCode.Escape))

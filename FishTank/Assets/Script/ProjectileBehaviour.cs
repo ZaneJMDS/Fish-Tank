@@ -21,7 +21,10 @@ public class ProjectileBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SoundEffectManager.Play("Projectile"); // Play projectile sounds when object is called
+        if (FindAnyObjectByType<SoundEffectManager>() != null)
+        {
+            SoundEffectManager.Play("Projectile"); // Play projectile sounds when object is called
+        }
         camera_behaviour = GetComponent<CameraBehaviour>();
     }
 
