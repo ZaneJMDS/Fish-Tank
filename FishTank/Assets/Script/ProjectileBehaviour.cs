@@ -12,9 +12,9 @@ using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
-    [SerializeField] public float speed = 6f;
-    [SerializeField] public int damage = 1;
-    [SerializeField] public float time_between_firing = 0.01f;
+    [SerializeField] public float speed;
+    [SerializeField] public int damage;
+    [SerializeField] public float time_between_firing;
 
     private CameraBehaviour camera_behaviour;
 

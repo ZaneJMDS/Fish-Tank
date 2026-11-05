@@ -15,7 +15,7 @@ public class PlayerShoot : MonoBehaviour
     // For projectiles
     public GameObject projectile;
 
-    [SerializeField] private float overheat_timer = 0;
+    [SerializeField] private float overheat_timer = 0; // Not used yet
 
     InputAction attack_action;
     InputAction switch_action;
@@ -23,8 +23,8 @@ public class PlayerShoot : MonoBehaviour
     // Timers
     public bool primary_fire = true;
     public bool secondary_fire = true;
-    private float primary_timer;
-    private float secondary_timer;
+    private float primary_timer = 0f;
+    private float secondary_timer = 0f;
 
     private Vector3 currentAngle;
 
@@ -32,6 +32,7 @@ public class PlayerShoot : MonoBehaviour
     public GameObject Gun;
     private SpriteRenderer gun_sprite_renderer;
     [SerializeField] Sprite[] gun_sprites;
+    int current_gun = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -55,9 +56,10 @@ public class PlayerShoot : MonoBehaviour
         if (!primary_fire)
         {
             primary_timer += Time.deltaTime;
+
             if (primary_timer > projectile.GetComponent<ProjectileBehaviour>().time_between_firing)
             {
-                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<SpriteRenderer>().enabled = false; // Turret fire
                 primary_fire = true;
                 primary_timer = 0f;
             }
@@ -67,48 +69,70 @@ public class PlayerShoot : MonoBehaviour
         if (!secondary_fire)
         {
             secondary_timer += Time.deltaTime;
+            print(Time.deltaTime);
+
+            // WHY IS THIS ALWAYS ACTIVE
             if (secondary_timer > HitscanBehaviour.time_between_firing)
             {
-                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<SpriteRenderer>().enabled = false; // Turret fire
                 secondary_fire = true;
                 secondary_timer = 0f;
             }
         }
 
-        // Primary Fire
-        if (attack_action.IsPressed() && primary_fire && !switch_action.IsPressed())
+        // Fire
+        if (attack_action.IsPressed())
         {
-            primary_fire = false;
-
-            GetComponent<SpriteRenderer>().enabled = true;
-            gun_sprite_renderer.sprite = gun_sprites[1]; // Minigun
-
-            // Summon a projectile at the player's position and where they are facing
-            Quaternion bullet_offset = transform.rotation * Quaternion.Euler(0, 0, 270);
-            Instantiate(projectile, transform.position, bullet_offset);
-        }
-
-        // Secondary fire
-        if (switch_action.IsPressed() && secondary_fire && !attack_action.IsPressed())
-        {
-            secondary_fire = false;
-
-            GetComponent<SpriteRenderer>().enabled = true;
-            gun_sprite_renderer.sprite = gun_sprites[2]; // Laser gun
-
-            // Hitscan holding all enemies hit
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, current_direction);
-
-            // PIERCING LETS FREAKING GO
-            for (int i = 0; i < hits.Length; i++)
+            // Primary
+            if (current_gun == 0 && primary_fire)
             {
-                // Only care about enemies
-                if (hits[i].collider.CompareTag("Enemies"))
+                primary_fire = false;
+
+                GetComponent<SpriteRenderer>().enabled = true; // Turret 
+
+                // Summon a projectile at the player's position and where they are facing
+                Quaternion bullet_offset = transform.rotation * Quaternion.Euler(0, 0, 270);
+                Instantiate(projectile, transform.position, bullet_offset);
+            }
+
+            // Secondary
+            if (current_gun == 1 && secondary_fire)
+            {
+                secondary_fire = false;
+
+                GetComponent<SpriteRenderer>().enabled = true; // turret fire
+
+                // Hitscan holding all enemies hit
+                RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, current_direction);
+
+                // PIERCING LETS FREAKING GO
+                for (int i = 0; i < hits.Length; i++)
                 {
-                    hits[i].collider.gameObject.GetComponent<EnemyLook>().health -= HitscanBehaviour.damage; // Decrease the enemy's health if hit
-                    hits[i].collider.gameObject.GetComponent<EnemyLook>().SummonHitExplosion();
+                    // Only care about enemies
+                    if (hits[i].collider.CompareTag("Enemies"))
+                    {
+                        hits[i].collider.gameObject.GetComponent<EnemyLook>().health -= HitscanBehaviour.damage; // Decrease the enemy's health if hit
+                        hits[i].collider.gameObject.GetComponent<EnemyLook>().SummonHitExplosion();
+                    }
                 }
             }
+        }
+
+        // Switch action is only pressed once
+        if (switch_action.WasPressedThisFrame())
+        {
+            if (current_gun < gun_sprites.Length - 1)
+            {
+                current_gun++;
+            }
+
+            // Loop back to the start
+            else 
+            {
+                current_gun = 0;
+            }
+
+            gun_sprite_renderer.sprite = gun_sprites[current_gun];
         }
     }
 }

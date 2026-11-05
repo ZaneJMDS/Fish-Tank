@@ -14,6 +14,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip background_music;
     [SerializeField] private Slider music_slider;
 
+    // Singleton design pattern
     private void Awake()
     {
         if (instance == null)

@@ -13,8 +13,8 @@ using UnityEngine;
 public class HitscanBehaviour : MonoBehaviour
 {
     // Stat field
-    [SerializeField] public static int damage = 10;
-    [SerializeField] public static float time_between_firing = 0.5f;
+    public static int damage = 10;
+    public static float time_between_firing = 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

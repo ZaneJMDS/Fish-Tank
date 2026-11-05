@@ -9,6 +9,7 @@ File name   :   PlayerMovement.cs
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float move_speed = 4f;
     private float health;
     private const float max_health = 100f;
-
     public Slider health_slider;
 
     private Rigidbody2D rb; // Player can control this object
@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private CameraBehaviour camera_behaviour; // So player dosn't go out of bounds
 
     [SerializeField] Sprite[] player_sprites; // Switch between health sprites
+
+    float timer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,19 +66,19 @@ public class PlayerMovement : MonoBehaviour
 
         // Update health indicators
         // Full health
-        if (health >= 6f)
+        if (health >= max_health / 2)
         {
             sprite_renderer.sprite = player_sprites[0];
         }
 
         // Medium health
-        if (health < 6f)
+        if (health < max_health / 2)
         {
             sprite_renderer.sprite = player_sprites[1];
         }
 
         // Low health
-        if (health < 3f)
+        if (health < max_health / 4)
         {
             sprite_renderer.sprite = player_sprites[2];
         }
@@ -84,6 +86,10 @@ public class PlayerMovement : MonoBehaviour
         // Player is dead, take them to start menu
         if (health < 0f)
         {
+            // timer += Time.deltaTime;
+
+            print("Wait for death");
+
             SceneManager.LoadScene("Menu");
         }
 
