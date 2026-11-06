@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: ac6afcbf94f5b8f48b85d6999a995e42
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1721159332621272654
+    second: enemy_lilguy3_3_0
+  - first:
+      213: -7462193564799140882
+    second: enemy_lilguy3_3_1
+  - first:
+      213: 3205110612298631185
+    second: enemy_lilguy3_3_2
+  - first:
+      213: 3388315814380405850
+    second: enemy_lilguy3_3_3
+  - first:
+      213: -3447857785942696234
+    second: enemy_lilguy3_3_4
+  - first:
+      213: 4368311533340029676
+    second: enemy_lilguy3_3_5
+  - first:
+      213: -1254580852526539391
+    second: enemy_lilguy3_3_6
+  - first:
+      213: 920059104732422608
+    second: enemy_lilguy3_3_7
+  - first:
+      213: 6209835163583863481
+    second: enemy_lilguy3_3_8
+  - first:
+      213: -1866285976092286220
+    second: enemy_lilguy3_3_9
+  - first:
+      213: 8653231523091605005
+    second: enemy_lilguy3_3_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_0
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 907
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e464dbe3b49c2e710800000000000000
+      internalID: 1721159332621272654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_1
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 885
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eebf0fc3d76f07890800000000000000
+      internalID: -7462193564799140882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_2
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 877
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11805e7de17da7c20800000000000000
+      internalID: 3205110612298631185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_3
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 322
+        width: 781
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a548bf6f747b50f20800000000000000
+      internalID: 3388315814380405850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_4
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 475
+        width: 498
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6de12d87c9fb620d0800000000000000
+      internalID: -3447857785942696234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_5
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 396
+        width: 70
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce279fcf13c5f9c30800000000000000
+      internalID: 4368311533340029676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_6
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 327
+        width: 51
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18d16279c55d69ee0800000000000000
+      internalID: -1254580852526539391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_7
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 414
+        width: 62
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d1a0fd81e4b4cc00800000000000000
+      internalID: 920059104732422608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_8
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 308
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ba552f1e24cd2650800000000000000
+      internalID: 6209835163583863481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_9
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 305
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f2e9b1face9916e0800000000000000
+      internalID: -1866285976092286220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_lilguy3_3_10
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 265
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0666153934761870800000000000000
+      internalID: 8653231523091605005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      enemy_lilguy3_3_0: 1721159332621272654
+      enemy_lilguy3_3_1: -7462193564799140882
+      enemy_lilguy3_3_10: 8653231523091605005
+      enemy_lilguy3_3_2: 3205110612298631185
+      enemy_lilguy3_3_3: 3388315814380405850
+      enemy_lilguy3_3_4: -3447857785942696234
+      enemy_lilguy3_3_5: 4368311533340029676
+      enemy_lilguy3_3_6: -1254580852526539391
+      enemy_lilguy3_3_7: 920059104732422608
+      enemy_lilguy3_3_8: 6209835163583863481
+      enemy_lilguy3_3_9: -1866285976092286220
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
