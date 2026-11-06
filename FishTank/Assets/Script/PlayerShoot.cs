@@ -6,6 +6,7 @@ Description :   Player shoots at current direction
 File name   :   PlayerShoot.cs
 **************************************************************************/
 
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,8 @@ public class PlayerShoot : MonoBehaviour
     public GameObject projectile;
 
     [SerializeField] private float overheat_timer = 0; // Not used yet
+
+    [SerializeField] GameObject gun_text;
 
     InputAction attack_action;
     InputAction switch_action;
@@ -69,7 +72,6 @@ public class PlayerShoot : MonoBehaviour
         if (!secondary_fire)
         {
             secondary_timer += Time.deltaTime;
-            print(Time.deltaTime);
 
             // WHY IS THIS ALWAYS ACTIVE
             if (secondary_timer > HitscanBehaviour.time_between_firing)
@@ -133,6 +135,7 @@ public class PlayerShoot : MonoBehaviour
             }
 
             gun_sprite_renderer.sprite = gun_sprites[current_gun];
+            gun_text.GetComponent<TextMeshProUGUI>().text = "Current weapon: " + gun_sprites[current_gun].name;
         }
     }
 }

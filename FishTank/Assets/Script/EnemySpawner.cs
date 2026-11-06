@@ -4,12 +4,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject biome_text;
+    [SerializeField] GameObject wave_text;
 
     [SerializeField] private float interval; // Time between spawns
-    private int level_enemies = 0; // How many enemies the player will fight before going to the next level
+    private float wave_interval = 3f; // Time between waves
+    private int level_enemies = 0; // How many enemies the player has fought this wave
+    private int max_enemies = 20; // How many enemies the player will fight this wave
     private float timer = 0f; // Time to spawn enemies
     private float start_timer = 0f;
-    private int waves = 0;
+    private int waves = 1;
 
     public GameObject[] enemies;
 
@@ -20,8 +23,9 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         start_timer += Time.deltaTime;
+        biome_text.SetActive(true);
 
-        if (start_timer > 3f)
+        if (start_timer > wave_interval)
         {
             biome_text.SetActive(false);
 
@@ -29,12 +33,12 @@ public class EnemySpawner : MonoBehaviour
             timer += Time.deltaTime;
 
             // Move to the next level
-            if (level_enemies == 20)
+            if (level_enemies >= 20)
             {
                 waves++;
+                wave_text.GetComponent<TextMeshProUGUI>().text = "Waves: " + waves;
                 level_enemies = 0;
-
-                Debug.Log("New wave");
+                start_timer = 0f;
             }
 
             // Only spawn if there are less than 20 overall enemies
