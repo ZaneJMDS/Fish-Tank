@@ -18,9 +18,6 @@ public class PlayerLook : Look
     [SerializeField] private float lerp_speed = 1f;
     private Vector3 currentAngle;
 
-    // Line
-    public LineRenderer target_line;
-
     // Update is called once per frame
     void Update()
     {
@@ -29,9 +26,5 @@ public class PlayerLook : Look
         Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Get mouse position relative to the screen
         Vector2 target_direction = (mouse_pos - transform.position); // Get Direction
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(currentAngle.z, FaceTarget(target_direction), Time.deltaTime * lerp_speed)); // Lerp so not instant
-
-        // Draw a line from the player to current direction
-        // target_line.SetPosition(0, transform.position);
-        // target_line.SetPosition(1, current_direction);
     }
 }

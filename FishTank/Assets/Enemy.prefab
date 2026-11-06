@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 943631122088211979}
   - component: {fileID: 2267710164053075998}
   - component: {fileID: -554062366868273757}
+  - component: {fileID: 4811030866413699164}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemies
@@ -111,7 +112,9 @@ MonoBehaviour:
   lerp_speed: 2
   enemy_score: 10
   bubbles_dropped: 0
+  ink_splat: 1
   bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
+  ink: {fileID: 7227558413992139809, guid: 88f74ae4cbbe98f43903457e9c0a0c7b, type: 3}
   projectile: {fileID: 3424012882688714860, guid: a4d6a89103ed41448ba8c672f312621b, type: 3}
   hit_explosion: {fileID: 1986321831257243202, guid: 81008ad41d1d68544ac9633107989b9f, type: 3}
 --- !u!61 &943631122088211979
@@ -202,3 +205,21 @@ MonoBehaviour:
   speed: 2
   rb: {fileID: 2267710164053075998}
   explosive: 0
+--- !u!114 &4811030866413699164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396747204816518508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed1197c96c9ff74a952587c68ddf858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraBehaviour
+  cameraRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0

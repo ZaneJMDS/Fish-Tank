@@ -34,7 +34,7 @@ public class PlayerShoot : MonoBehaviour
     // Change sprites for guns
     public GameObject Gun;
     private SpriteRenderer gun_sprite_renderer;
-    [SerializeField] Sprite[] gun_sprites;
+    [SerializeField] GameObject[] gun_sprites;
     int current_gun = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,6 +45,7 @@ public class PlayerShoot : MonoBehaviour
         switch_action = InputSystem.actions.FindAction("Interact");
 
         gun_sprite_renderer = Gun.GetComponent<SpriteRenderer>(); // Change the gun sprite
+        GetComponent<SpriteRenderer>().enabled = false; // Turret fire
     }
 
     // Update is called once per frame
@@ -123,6 +124,10 @@ public class PlayerShoot : MonoBehaviour
         // Switch action is only pressed once
         if (switch_action.WasPressedThisFrame())
         {
+            // Move Current Gun Left and New Gun Right
+            gun_sprites[current_gun].transform.position = new Vector2(-8f, gun_sprites[current_gun].transform.position.y);
+            gun_sprites[current_gun].transform.localScale = new Vector2(0.5f, 0.5f);
+
             if (current_gun < gun_sprites.Length - 1)
             {
                 current_gun++;
@@ -134,8 +139,10 @@ public class PlayerShoot : MonoBehaviour
                 current_gun = 0;
             }
 
-            gun_sprite_renderer.sprite = gun_sprites[current_gun];
+            gun_sprite_renderer.sprite = gun_sprites[current_gun].GetComponent<SpriteRenderer>().sprite;
             gun_text.GetComponent<TextMeshProUGUI>().text = "Current weapon: " + gun_sprites[current_gun].name;
+            gun_sprites[current_gun].transform.position = new Vector2(-6f, gun_sprites[current_gun].transform.position.y);
+            gun_sprites[current_gun].transform.localScale = new Vector2(0.75f, 0.75f);
         }
     }
 }
