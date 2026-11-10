@@ -4,7 +4,6 @@ using UnityEngine;
 // die and jig around a bit
 public class HitExplosionBehaviour : MonoBehaviour
 {
-    
     float alive_timer = 0;
 
     void Start()

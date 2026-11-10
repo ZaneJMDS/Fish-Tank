@@ -6,7 +6,6 @@ Description :   Player moves around / other tank stuff
 File name   :   PlayerMovement.cs
 **************************************************************************/
 
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -58,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             // Decrease health slowly over time
             if (health > 1f)
             {
-                health -= 0.005f;
+                health -= 0.002f;
             }
 
             // TODO Increase move speed if held
@@ -127,5 +126,6 @@ public class PlayerMovement : MonoBehaviour
     public void GainHealth(float _health)
     {
         if (health < max_health) { health += _health; }
+        Debug.Log("Gain health");
     }
 }

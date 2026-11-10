@@ -16,11 +16,10 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private float interval; // Time between spawns
     private float wave_interval = 3f; // Time between waves
-    private int level_enemies = 0; // How many enemies the player has fought this wave
-    private int max_enemies = 5; // How many enemies the player will fight this wave
     private float timer = 0f; // Time to spawn enemies
     private float start_timer = 0f;
     private int waves = 0;
+    private int wave_cost = 100;
 
     public GameObject[] enemies;
 
@@ -57,20 +56,18 @@ public class EnemySpawner : MonoBehaviour
             timer += Time.deltaTime;
 
             // Move to the next wave
-            if (level_enemies >= max_enemies)
+            if (wave_cost < 0)
             {
                 waves++;
                 wave_text.GetComponent<TextMeshProUGUI>().text = "Waves: " + waves;
-                level_enemies = 0;
                 start_timer = 0f;
-                max_enemies += 5; // Player has to fight more enemies in the next wave
+                wave_cost = 100 + waves * 10; // Increase cost to move to next wave
             }
 
             // Only spawn if there are less than the max enemies
-            if (timer >= interval && level_enemies < max_enemies)
+            if (timer >= interval && wave_cost >= 0)
             {
                 timer = 0f;
-                level_enemies++;
 
                 // Pick a random enemy to spawn from enemies length
                 if (waves+1 < enemies.Length)
@@ -83,6 +80,8 @@ public class EnemySpawner : MonoBehaviour
                 {
                     rand = Random.Range(0, enemies.Length);
                 }
+
+                wave_cost -= enemies[rand].GetComponent<EnemyLook>().GetScore();
 
                 // Spawn from a random enemy and x-val on top of the screen
                 Instantiate(enemies[rand], new Vector3(Random.Range(GetComponent<CameraBehaviour>().cameraRect.xMin, GetComponent<CameraBehaviour>().cameraRect.xMax), 5f, 0), Quaternion.identity);

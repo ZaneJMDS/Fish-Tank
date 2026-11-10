@@ -18,6 +18,7 @@ public class EnemyLook : Look
     [SerializeField] private int enemy_score;
     [SerializeField] private int bubbles_dropped;
     [SerializeField] private bool ink_splat;
+    [SerializeField] private bool can_shoot;
 
     // For projectiles
     private float timer;
@@ -52,17 +53,21 @@ public class EnemyLook : Look
         Vector2 target_direction = (player.transform.position - transform.position); // Convert to 2D
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(currentAngle.z, FaceTarget(target_direction), Time.deltaTime * lerp_speed));
 
-        timer += Time.deltaTime;
-        if (timer > projectile.GetComponent<ProjectileBehaviour>().time_between_firing)
+        // Fire in facing direction
+        if (can_shoot)
         {
-            timer = 0f;
+            timer += Time.deltaTime;
+            if (timer > projectile.GetComponent<ProjectileBehaviour>().time_between_firing)
+            {
+                timer = 0f;
 
-            // Summon a projectile at the player's position and where they are facing
-            Quaternion bullet_offset = transform.rotation * Quaternion.Euler(0, 0, 270 + Random.Range(-30, 30));
+                // Summon a projectile at the player's position and where they are facing
+                Quaternion bullet_offset = transform.rotation * Quaternion.Euler(0, 0, 270 + Random.Range(-30, 30));
 
-            // Current projectile will kill enemy
-            // Instantiate(projectile, transform.position, bullet_offset);
+                // Current projectile will kill enemy
+                Instantiate(projectile, transform.position, bullet_offset);
 
+            }
         }
 
         // If health is less than or equal to 0 you shall be gone
@@ -92,9 +97,15 @@ public class EnemyLook : Look
             health -= _other.gameObject.GetComponent<ProjectileBehaviour>().damage;
         }
     }
-    
+
+    // Summon explosion on this enemy
     public void SummonHitExplosion()
     {
-        Instantiate(hit_explosion, transform.position, transform.rotation); // Summon explosion
+        Instantiate(hit_explosion, transform.position, transform.rotation);
+    }
+
+    public int GetScore()
+    {
+        return enemy_score;
     }
 }

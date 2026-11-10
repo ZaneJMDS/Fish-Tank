@@ -13,16 +13,23 @@ public class Collector : MonoBehaviour
         // Player picks up the bubble on collision
         if (_other.CompareTag("Bubbles"))
         {
-            // Increase health
-            transform.parent.GetComponent<PlayerMovement>().GainHealth(5f);
+            transform.parent.GetComponent<PlayerMovement>().GainHealth(100f);
             Destroy(_other.gameObject);
         }
 
         // Player takes damage on collision with enemies
         if (_other.CompareTag("Enemies"))
         {
-            // Decrease health
-            transform.parent.GetComponent<PlayerMovement>().GainHealth(-5f);
+            transform.parent.GetComponent<PlayerMovement>().GainHealth(-10f);
+            _other.GetComponent<EnemyLook>().SummonHitExplosion();
+            Destroy(_other.gameObject);
+        }
+
+        // Player gets hit by projectile
+        if (_other.CompareTag("EnemyProjectile"))
+        {
+            transform.parent.GetComponent<PlayerMovement>().GainHealth(_other.GetComponent<ProjectileBehaviour>().damage);
+            Destroy(_other.gameObject);
         }
     }
 }
