@@ -16,6 +16,9 @@ public class Collector : MonoBehaviour
             // Increase health
             transform.parent.GetComponent<PlayerMovement>().GainHealth(5f);
             Destroy(_other.gameObject);
+
+            // Play particle
+            transform.GetChild(0).GetComponent<ParticleSystem>().Play();
         }
 
         // Player takes damage on collision with enemies
@@ -24,5 +27,8 @@ public class Collector : MonoBehaviour
             // Decrease health
             transform.parent.GetComponent<PlayerMovement>().GainHealth(-5f);
         }
+
+        
+
     }
 }

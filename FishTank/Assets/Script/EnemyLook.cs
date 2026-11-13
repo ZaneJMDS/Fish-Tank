@@ -17,6 +17,8 @@ public class EnemyLook : Look
     [SerializeField] private int enemy_score;
     [SerializeField] private int bubbles_dropped;
 
+    [SerializeField] public GameObject DamageSplatter;
+    [SerializeField] public GameObject deathsplat;
     // For projectiles
     private float timer;
 
@@ -81,9 +83,11 @@ public class EnemyLook : Look
             health -= _other.gameObject.GetComponent<ProjectileBehaviour>().damage;
         }
     }
-    
+
     public void SummonHitExplosion()
     {
         Instantiate(hit_explosion, transform.position, transform.rotation); // Summon explosion
+
+        Instantiate(DamageSplatter, transform.position, transform.rotation); // damage splat particle effect
     }
 }
