@@ -3,10 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class GameButtonMenu : MonoBehaviour
 {
+    [SerializeField] GameObject enemy_spawner;
+
     // Should reload the gamescene
     public void Replay()
     {
-        SceneManager.LoadScene("Level1");
+        enemy_spawner.GetComponent<EnemySpawner>().ResetLevel();
     }
 
     // Return to menu

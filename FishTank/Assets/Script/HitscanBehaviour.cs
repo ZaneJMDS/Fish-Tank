@@ -15,10 +15,4 @@ public class HitscanBehaviour : MonoBehaviour
     // Stat field
     public static int damage = 10;
     public static float time_between_firing = 1f;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        SoundEffectManager.Play("Projectile"); // Play projectile sounds when object is called
-    }
 }

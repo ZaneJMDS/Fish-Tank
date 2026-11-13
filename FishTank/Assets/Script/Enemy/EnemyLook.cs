@@ -17,7 +17,7 @@ public class EnemyLook : Look
     [SerializeField] private float lerp_speed;
     [SerializeField] private int enemy_score;
     [SerializeField] private int bubbles_dropped;
-    [SerializeField] private bool ink_splat;
+    [SerializeField] public bool ink_splat;
     [SerializeField] private bool can_shoot;
 
     // For projectiles
@@ -28,7 +28,6 @@ public class EnemyLook : Look
     private GameObject player; // Needs to look at the player
 
     public GameObject bubble; // Spawns this on death
-    [SerializeField] GameObject ink;
 
     public GameObject projectile;
     public GameObject hit_explosion;
@@ -36,13 +35,6 @@ public class EnemyLook : Look
     void Start()
     {
         player = GameObject.Find("PlayerBase");
-
-        // Summon an ink splat in the play area
-        if (ink_splat)
-        {
-            Rect rec = GetComponent<CameraBehaviour>().cameraRect;
-            Instantiate(ink, new Vector2(Random.Range(rec.xMin, rec.xMax), Random.Range(rec.yMin, rec.yMax)), Quaternion.identity);
-        }
     }
 
     // Update is called once per frame

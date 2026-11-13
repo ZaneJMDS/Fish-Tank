@@ -18,7 +18,7 @@ public class GameMenu : MonoBehaviour
 
     public void Settings()
     {
-
+        SceneManager.LoadScene("Credits");
     }
 
     public void Quit()

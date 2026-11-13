@@ -112,7 +112,7 @@ MonoBehaviour:
   lerp_speed: 4
   enemy_score: 10
   bubbles_dropped: 0
-  ink_splat: 0
+  ink_splat: 1
   can_shoot: 0
   bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
   ink: {fileID: 7227558413992139809, guid: 88f74ae4cbbe98f43903457e9c0a0c7b, type: 3}

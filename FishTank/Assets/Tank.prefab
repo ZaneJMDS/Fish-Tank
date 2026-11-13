@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 105221378254949850}
   - component: {fileID: 7092672835944060771}
   - component: {fileID: 6451369817606679183}
-  - component: {fileID: -4494029923190092892}
   - component: {fileID: 5928848141124506410}
+  - component: {fileID: 197036217901591487}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Enemies
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5878635130023810395, guid: ac4832e346e4ccf41b58968898b01ffd, type: 3}
+  m_Sprite: {fileID: 4326872430171513394, guid: c0130e9d599f68c47be81760445d4612, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,7 +114,6 @@ MonoBehaviour:
   ink_splat: 1
   can_shoot: 1
   bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
-  ink: {fileID: 7227558413992139809, guid: 88f74ae4cbbe98f43903457e9c0a0c7b, type: 3}
   projectile: {fileID: 3424012882688714860, guid: 0ffa6ff8b4038004889d69ac7e1dd379, type: 3}
   hit_explosion: {fileID: 1986321831257243202, guid: 81008ad41d1d68544ac9633107989b9f, type: 3}
 --- !u!61 &6451369817606679183
@@ -155,7 +154,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.35, y: 6.98}
+    oldSize: {x: 5, y: 5.44}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -163,19 +162,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.82, y: 5.3}
   m_EdgeRadius: 0
---- !u!114 &-4494029923190092892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8662438956299635526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea0322d20ddfd749a9991193f19e873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  speed: 2
 --- !u!114 &5928848141124506410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,3 +180,16 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+--- !u!114 &197036217901591487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8662438956299635526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47b12c699f61fe4092573b2db2c8b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySideStep
+  speed: 2

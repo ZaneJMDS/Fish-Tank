@@ -487,8 +487,27 @@ MonoBehaviour:
   sound_effect_groups:
   - name: Projectile
     audio_clips:
-    - {fileID: 8300000, guid: 9448d84cc19485e4aa218c7b26b0dbb4, type: 3}
-    - {fileID: 8300000, guid: 3c8557883d6715d48a697ed39d4a9781, type: 3}
+    - {fileID: 8300000, guid: a52c009ddeb28a345bd69b728b50cf8f, type: 3}
+    - {fileID: 8300000, guid: aa1dd15764be106429495fcff24b50ab, type: 3}
+  - name: Bubble
+    audio_clips:
+    - {fileID: 8300000, guid: 26640668b8721a34dafe8e5d73711f59, type: 3}
+    - {fileID: 8300000, guid: 64f587d5ffcafb945b7767d2d46ddf6e, type: 3}
+    - {fileID: 8300000, guid: c0d3211fcbfb53d43bdfb5f4c65cf28e, type: 3}
+    - {fileID: 8300000, guid: ac2882a44e8c4824383485d15dd2b4f1, type: 3}
+    - {fileID: 8300000, guid: c9419abd3c9a4d4409e2d7a54c8da06b, type: 3}
+    - {fileID: 8300000, guid: f59b32fe0e9b28449b3789fa8c787a65, type: 3}
+  - name: Hit
+    audio_clips:
+    - {fileID: 8300000, guid: 161c6d811dfeb614cb4590d28845e753, type: 3}
+    - {fileID: 8300000, guid: bb3d63e93882bd4438281a0e83140b84, type: 3}
+  - name: Lazer
+    audio_clips:
+    - {fileID: 8300000, guid: 90d179e1aea7e6143adb2cc6ef28667f, type: 3}
+    - {fileID: 8300000, guid: 902d4a6807cd7a54ab533772b6e8029e, type: 3}
+    - {fileID: 8300000, guid: c29a13268dc42024e942b3f045179717, type: 3}
+    - {fileID: 8300000, guid: c29a13268dc42024e942b3f045179717, type: 3}
+    - {fileID: 8300000, guid: c29a13268dc42024e942b3f045179717, type: 3}
 --- !u!82 &409028732
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2345,7 +2364,7 @@ GameObject:
   - component: {fileID: 1685767255}
   - component: {fileID: 1685767254}
   m_Layer: 0
-  m_Name: IMG_1271_0
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

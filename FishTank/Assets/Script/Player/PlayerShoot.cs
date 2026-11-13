@@ -16,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
     // For projectiles
     public GameObject projectile;
 
-    [SerializeField] private float overheat_timer = 0; // Not used yet
+    [SerializeField] private float overheat_timer = 0; // TODO: Implement
 
     [SerializeField] GameObject gun_text;
 
@@ -101,6 +101,8 @@ public class PlayerShoot : MonoBehaviour
             // Secondary
             if (current_gun == 1 && secondary_fire)
             {
+                SoundEffectManager.Play("Lazer");
+
                 secondary_fire = false;
 
                 GetComponent<SpriteRenderer>().enabled = true; // turret fire
@@ -108,7 +110,7 @@ public class PlayerShoot : MonoBehaviour
                 // Hitscan holding all enemies hit
                 RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, current_direction);
 
-                // PIERCING LETS FREAKING GO
+                // PIERCING!
                 for (int i = 0; i < hits.Length; i++)
                 {
                     // Only care about enemies
