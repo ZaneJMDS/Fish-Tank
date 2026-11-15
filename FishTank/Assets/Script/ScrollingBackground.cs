@@ -1,3 +1,9 @@
+/***********************************************************************
+Author      :	Zane Jackson
+Studio      :	FishTank games
+Description :   Background scrolls and fades in and out
+**************************************************************************/
+
 using UnityEngine;
 
 // Scroll the background

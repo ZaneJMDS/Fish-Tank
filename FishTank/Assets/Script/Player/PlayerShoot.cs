@@ -14,12 +14,14 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : MonoBehaviour
 {
     // For projectiles
-    public GameObject projectile;
-
+    [SerializeField] private GameObject projectile;
     [SerializeField] private float overheat_timer = 0; // TODO: Implement
 
-    [SerializeField] GameObject gun_text;
+    // For UI
+    [SerializeField] private GameObject gun_text;
+    [SerializeField] private GameObject Gun;
 
+    // Interactions
     InputAction attack_action;
     InputAction switch_action;
 
@@ -32,10 +34,10 @@ public class PlayerShoot : MonoBehaviour
     private Vector3 currentAngle;
 
     // Change sprites for guns
-    public GameObject Gun;
     private SpriteRenderer gun_sprite_renderer;
-    [SerializeField] GameObject[] gun_sprites;
-    int current_gun = 0;
+    [SerializeField] private GameObject[] gun_sprites;
+    private int current_gun = 0;
+    [SerializeField] private LineRenderer lazerbeam;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,6 +48,9 @@ public class PlayerShoot : MonoBehaviour
 
         gun_sprite_renderer = Gun.GetComponent<SpriteRenderer>(); // Change the gun sprite
         GetComponent<SpriteRenderer>().enabled = false; // Turret fire
+        gun_text.GetComponent<TextMeshProUGUI>().text = gun_sprites[current_gun].name;
+
+        lazerbeam.enabled = false;
     }
 
     // Update is called once per frame
@@ -54,7 +59,7 @@ public class PlayerShoot : MonoBehaviour
         // Convert current rotation to direction
         currentAngle = transform.eulerAngles; // Update the current angle each frame
         float angle_rad = (currentAngle.z + 90) * Mathf.Deg2Rad;
-        Vector2 current_direction = new(Mathf.Cos(angle_rad), Mathf.Sin(angle_rad));
+        Vector3 current_direction = new(Mathf.Cos(angle_rad), Mathf.Sin(angle_rad), transform.rotation.z);
 
         // Primary fire delay
         if (!primary_fire)
@@ -74,10 +79,11 @@ public class PlayerShoot : MonoBehaviour
         {
             secondary_timer += Time.deltaTime;
 
-            // WHY IS THIS ALWAYS ACTIVE
             if (secondary_timer > HitscanBehaviour.time_between_firing)
             {
                 GetComponent<SpriteRenderer>().enabled = false; // Turret fire
+                lazerbeam.enabled = false;
+
                 secondary_fire = true;
                 secondary_timer = 0f;
             }
@@ -101,23 +107,40 @@ public class PlayerShoot : MonoBehaviour
             // Secondary
             if (current_gun == 1 && secondary_fire)
             {
-                SoundEffectManager.Play("Lazer");
+                if (FindAnyObjectByType<SoundEffectManager>() != null)
+                {
+                    SoundEffectManager.Play("Lazer");
+                }
 
                 secondary_fire = false;
 
+                lazerbeam.enabled = true;
                 GetComponent<SpriteRenderer>().enabled = true; // turret fire
 
-                // Hitscan holding all enemies hit
+                // Hitscan holding all targets hit
                 RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, current_direction);
+
+                lazerbeam.SetPosition(0, transform.position);
+                lazerbeam.SetPosition(1, (current_direction * 10) + transform.position);
 
                 // PIERCING!
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    // Only care about enemies
+                    // Hit an obstacle end loop
+                    if (hits[i].collider.CompareTag("Obstacle"))
+                    {
+                        i = hits.Length - 1;
+                        print("Obstacle hit");
+
+                        lazerbeam.SetPosition(0, transform.position);
+                        lazerbeam.SetPosition(1, hits[i].transform.position);
+                    }
+
+                    // Hit an enemies
                     if (hits[i].collider.CompareTag("Enemies"))
                     {
-                        hits[i].collider.gameObject.GetComponent<EnemyLook>().health -= HitscanBehaviour.damage; // Decrease the enemy's health if hit
-                        hits[i].collider.gameObject.GetComponent<EnemyLook>().SummonHitExplosion();
+                        hits[i].collider.gameObject.GetComponent<EnemyBase>().health -= HitscanBehaviour.damage; // Decrease the enemy's health if hit
+                        hits[i].collider.gameObject.GetComponent<EnemyBase>().SummonHitExplosion();
                     }
                 }
             }
@@ -142,7 +165,7 @@ public class PlayerShoot : MonoBehaviour
             }
 
             gun_sprite_renderer.sprite = gun_sprites[current_gun].GetComponent<SpriteRenderer>().sprite;
-            gun_text.GetComponent<TextMeshProUGUI>().text = "Current weapon: " + gun_sprites[current_gun].name;
+            gun_text.GetComponent<TextMeshProUGUI>().text = gun_sprites[current_gun].name;
             gun_sprites[current_gun].transform.position = new Vector2(-6f, gun_sprites[current_gun].transform.position.y);
             gun_sprites[current_gun].transform.localScale = new Vector2(0.75f, 0.75f);
         }

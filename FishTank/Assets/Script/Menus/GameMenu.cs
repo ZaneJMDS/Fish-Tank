@@ -1,9 +1,3 @@
-/***********************************************************************
-Author      :	ThunderDev
-Description :   Main menu
-File name   :   GameMenu.cs
-**************************************************************************/
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

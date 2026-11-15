@@ -1,9 +1,7 @@
 /***********************************************************************
 Author      :	Zane Jackson
-Mail        :   Zane.Jackson@mds.ac.nz
 Studio      :	FishTank games
-Description :   Math to face a direction
-File name   :   Look.cs
+Description :   Face a direction
 **************************************************************************/
 
 using UnityEngine;

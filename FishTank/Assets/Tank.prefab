@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4446739153418272148}
   - component: {fileID: 105221378254949850}
-  - component: {fileID: 7092672835944060771}
   - component: {fileID: 6451369817606679183}
   - component: {fileID: 5928848141124506410}
   - component: {fileID: 197036217901591487}
+  - component: {fileID: 1613347754116605695}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Enemies
@@ -95,27 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &7092672835944060771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8662438956299635526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf459c471923de647bbc9d9f99708070, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyLook
-  health: 10
-  lerp_speed: 2
-  enemy_score: 20
-  bubbles_dropped: 1
-  ink_splat: 1
-  can_shoot: 1
-  bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
-  projectile: {fileID: 3424012882688714860, guid: 0ffa6ff8b4038004889d69ac7e1dd379, type: 3}
-  hit_explosion: {fileID: 1986321831257243202, guid: 81008ad41d1d68544ac9633107989b9f, type: 3}
 --- !u!61 &6451369817606679183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -193,3 +172,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySideStep
   speed: 2
+--- !u!114 &1613347754116605695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8662438956299635526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4285f49a1ce459f42a51e39c6b2a8f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBase
+  health: 10
+  enemy_score: 20
+  ink_splat: 0
+  can_shoot: 1
+  bubbles_dropped: 1
+  bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
+  hit_explosion: {fileID: 1986321831257243202, guid: 81008ad41d1d68544ac9633107989b9f, type: 3}
+  projectile: {fileID: 3424012882688714860, guid: 0ffa6ff8b4038004889d69ac7e1dd379, type: 3}

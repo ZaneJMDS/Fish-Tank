@@ -1,3 +1,9 @@
+/***********************************************************************
+Author      :	Zane Jackson
+Studio      :	FishTank games
+Description :   Ink that appears on screen for a period of time
+**************************************************************************/
+
 using UnityEngine;
 
 public class InkBehaviour : MonoBehaviour

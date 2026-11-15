@@ -1,10 +1,16 @@
+/***********************************************************************
+Author      :	Zane Jackson
+Studio      :	FishTank games
+Description :   Spawn enemies and progress waves (Main game loop)
+**************************************************************************/
+
 using System.Collections;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(CameraBehaviour))]
 public class EnemySpawner : MonoBehaviour
 {
+    // Text fields
     [SerializeField] GameObject biome_text;
     [SerializeField] GameObject wave_text;
     [SerializeField] GameObject depth_text;
@@ -23,10 +29,19 @@ public class EnemySpawner : MonoBehaviour
     private int waves = 0;
     private int wave_cost = 100;
 
+    // Spawnables
     public GameObject[] enemies;
+    public GameObject[] obstacles;
 
-    int rand;
     bool level_complete = false;
+    
+    [SerializeField] GameObject play_space;
+    private Rect spawn_space;
+
+    private void Start()
+    {
+        spawn_space = play_space.GetComponent<CameraBehaviour>().cameraRect;
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,6 +49,7 @@ public class EnemySpawner : MonoBehaviour
         // Only update if enemy has health
         if (player.GetComponent<PlayerMovement>().health > 0)
         {
+            // Increase 
             start_timer += Time.deltaTime;
 
             // Display the current biome name
@@ -46,7 +62,7 @@ public class EnemySpawner : MonoBehaviour
 
             else
             {
-                
+                level_complete = true;
             }
 
             biome_text.SetActive(true);
@@ -74,23 +90,34 @@ public class EnemySpawner : MonoBehaviour
                 if (timer >= interval && wave_cost >= 0)
                 {
                     timer = 0f;
+                    int rand = Random.Range(0, 3);
 
-                    // Pick a random enemy to spawn from enemies length
-                    if (waves + 1 < enemies.Length)
+                    // Spawn an enemy
+                    if (rand < 2)
                     {
-                        rand = Random.Range(0, waves + 1);
+                        // Pick a random enemy to spawn from enemies length
+                        if (waves + 1 < enemies.Length)
+                        {
+                            rand = Random.Range(0, waves + 1);
+                        }
+
+                        // Spawn all the enemies
+                        else
+                        {
+                            rand = Random.Range(0, enemies.Length);
+                        }
+
+                        wave_cost -= enemies[rand].GetComponent<EnemyBase>().enemy_score;
+
+                        // Spawn from a random enemy and x-val on top of the screen
+                        Instantiate(enemies[rand], new Vector3(Random.Range(spawn_space.xMin, spawn_space.xMax), 5f, 0), Quaternion.identity);
                     }
 
-                    // Spawn all the enemies
+                    // Spawn an obstacle
                     else
                     {
-                        rand = Random.Range(0, enemies.Length);
+                        Instantiate(obstacles[0], new Vector3(Random.Range(spawn_space.xMin, spawn_space.xMax), 5f, 0), Quaternion.identity);
                     }
-
-                    wave_cost -= enemies[rand].GetComponent<EnemyLook>().GetScore();
-
-                    // Spawn from a random enemy and x-val on top of the screen
-                    Instantiate(enemies[rand], new Vector3(Random.Range(GetComponent<CameraBehaviour>().cameraRect.xMin, GetComponent<CameraBehaviour>().cameraRect.xMax), 5f, 0), Quaternion.identity);
                 }
             }
         }

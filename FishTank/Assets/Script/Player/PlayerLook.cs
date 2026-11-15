@@ -1,9 +1,7 @@
 /***********************************************************************
 Author      :	Zane Jackson
-Mail        :   Zane.Jackson@mds.ac.nz
 Studio      :	FishTank games
 Description :   Player aims at where the mouse is pointing
-File name   :   PlayerLook.cs
 **************************************************************************/
 
 using Unity.Mathematics;

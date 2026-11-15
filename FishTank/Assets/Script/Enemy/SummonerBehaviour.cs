@@ -1,3 +1,9 @@
+/***********************************************************************
+Author      :	Zane Jackson
+Studio      :	FishTank games
+Description :   Summon more enemies
+**************************************************************************/
+
 using Unity.VisualScripting;
 using UnityEngine;
 

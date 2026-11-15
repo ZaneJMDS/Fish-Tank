@@ -17,24 +17,32 @@ public class Collector : MonoBehaviour
         {
             transform.parent.GetComponent<PlayerMovement>().GainHealth(10f);
             Destroy(_other.gameObject);
-            SoundEffectManager.Play("Bubble");
+
+            if (FindAnyObjectByType<SoundEffectManager>() != null)
+            {
+                SoundEffectManager.Play("Bubble");
+            }
         }
 
         // Player takes damage on collision with enemies
         if (_other.CompareTag("Enemies"))
         {
             transform.parent.GetComponent<PlayerMovement>().GainHealth(-20f);
-            _other.GetComponent<EnemyLook>().SummonHitExplosion();
+            _other.GetComponent<EnemyBase>().SummonHitExplosion();
 
             // Summon an ink splat in the play area
-            if (_other.GetComponent<EnemyLook>().ink_splat)
+            if (_other.GetComponent<EnemyBase>().ink_splat)
             {
                 Rect rec = transform.parent.GetComponent<CameraBehaviour>().cameraRect;
                 Instantiate(ink, new Vector2(Random.Range(rec.xMin, rec.xMax), Random.Range(rec.yMin, rec.yMax)), Quaternion.identity);
             }
 
             Destroy(_other.gameObject);
-            SoundEffectManager.Play("Hit");
+
+            if (FindAnyObjectByType<SoundEffectManager>() != null)
+            {
+                SoundEffectManager.Play("Hit");
+            }
         }
 
         // Player gets hit by projectile
@@ -42,7 +50,11 @@ public class Collector : MonoBehaviour
         {
             transform.parent.GetComponent<PlayerMovement>().GainHealth(-_other.GetComponent<ProjectileBehaviour>().damage);
             Destroy(_other.gameObject);
-            SoundEffectManager.Play("Hit");
+
+            if (FindAnyObjectByType<SoundEffectManager>() != null)
+            {
+                SoundEffectManager.Play("Hit");
+            }
         }
     }
 }

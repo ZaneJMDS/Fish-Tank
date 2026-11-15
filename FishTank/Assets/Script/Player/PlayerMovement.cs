@@ -16,7 +16,6 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float max_move_speed;
     private float move_speed = 5f;
 
     public float health;
@@ -28,12 +27,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 move_input;
     private float sprite_radius;
 
-    private CameraBehaviour camera_behaviour; // So player dosn't go out of bounds
 
     [SerializeField] Sprite[] player_sprites; // Switch between health sprites
     
     [SerializeField] GameObject button_manager;
     [SerializeField] GameObject game_over_text;
+
+    [SerializeField] GameObject play_space;
+    private Rect move_space;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
         sprite_renderer = GetComponent<SpriteRenderer>();
         sprite_radius = 0.05f * sprite_renderer.sprite.bounds.extents.x; // Unity's dumb radius math converting pixels to screen space
 
-        camera_behaviour = GetComponent<CameraBehaviour>();
+
+        move_space = play_space.GetComponent<CameraBehaviour>().cameraRect;
     }
 
     // Update is called once per frame
@@ -61,26 +63,11 @@ public class PlayerMovement : MonoBehaviour
                 health -= 0.002f;
             }
 
-            // TODO Increase move speed if held
-           /* if (move_speed < max_move_speed)
-            {
-                move_speed += Time.deltaTime * max_move_speed / 10;
-            }*/
-
             // If out of bounds of the camera, player can't move in that direction
-            if (transform.position.x - sprite_radius < camera_behaviour.cameraRect.xMin && move_input.x < 0) { move_input.x = 0; } // Left
-            if (transform.position.x + sprite_radius > camera_behaviour.cameraRect.xMax && move_input.x > 0) { move_input.x = 0; } // Right
-            if (transform.position.y - sprite_radius < camera_behaviour.cameraRect.yMin && move_input.y < 0) { move_input.y = 0; } // Up
-            if (transform.position.y + sprite_radius > camera_behaviour.cameraRect.yMax && move_input.y > 0) { move_input.y = 0; } // Down
-            
-
-            /*if (move_input.x == 0 && move_input.y == 0)
-            {
-                if (move_speed > 0)
-                {
-                    move_speed -= Time.deltaTime * max_move_speed / 10;
-                }
-            }*/
+            if (transform.position.x - sprite_radius < move_space.xMin && move_input.x < 0) { move_input.x = 0; } // Left
+            if (transform.position.x + sprite_radius > move_space.xMax && move_input.x > 0) { move_input.x = 0; } // Right
+            if (transform.position.y - sprite_radius < move_space.yMin && move_input.y < 0) { move_input.y = 0; } // Up
+            if (transform.position.y + sprite_radius > move_space.yMax && move_input.y > 0) { move_input.y = 0; } // Down
 
             // Update health indicators
             // Full health
@@ -130,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
         if (health > max_health) { health = max_health; }
     }
 
+    // Reset the player to their default stats 
     public void Reset()
     {
         health = max_health;

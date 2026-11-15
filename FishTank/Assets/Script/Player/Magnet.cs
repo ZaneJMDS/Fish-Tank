@@ -1,6 +1,6 @@
 /***********************************************************************
 Author      :	BMO dev
-Description :   Pickup enters range of the player
+Description :   Object enters range of the player
 **************************************************************************/
 
 using UnityEngine;
