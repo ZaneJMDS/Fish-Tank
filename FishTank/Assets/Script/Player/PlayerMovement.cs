@@ -27,13 +27,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 move_input;
     private float sprite_radius;
 
-
     [SerializeField] Sprite[] player_sprites; // Switch between health sprites
     
     [SerializeField] GameObject button_manager;
     [SerializeField] GameObject game_over_text;
 
-    [SerializeField] GameObject play_space;
     private Rect move_space;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         sprite_radius = 0.05f * sprite_renderer.sprite.bounds.extents.x; // Unity's dumb radius math converting pixels to screen space
 
 
-        move_space = play_space.GetComponent<CameraBehaviour>().cameraRect;
+        move_space = GetComponent<CameraBehaviour>().cameraRect;
     }
 
     // Update is called once per frame

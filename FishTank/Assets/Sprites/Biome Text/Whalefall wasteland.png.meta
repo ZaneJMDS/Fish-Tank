@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: f769c14584886d84e8d93497bc00431f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5339945289967535997
+    second: Whalefall wasteland_0
+  - first:
+      213: 1615563030976214500
+    second: Whalefall wasteland_1
+  - first:
+      213: 4377757298147742452
+    second: Whalefall wasteland_2
+  - first:
+      213: -3456984811285247123
+    second: Whalefall wasteland_3
+  - first:
+      213: 5350290971884376190
+    second: Whalefall wasteland_4
+  - first:
+      213: -1547587096019683857
+    second: Whalefall wasteland_5
+  - first:
+      213: -7684280891290141800
+    second: Whalefall wasteland_6
+  - first:
+      213: -8851912915018507223
+    second: Whalefall wasteland_7
+  - first:
+      213: 6205030371727883057
+    second: Whalefall wasteland_8
+  - first:
+      213: -8963521064268924545
+    second: Whalefall wasteland_9
+  - first:
+      213: -9056332866101152951
+    second: Whalefall wasteland_10
+  - first:
+      213: -1193409520827210191
+    second: Whalefall wasteland_11
+  - first:
+      213: -238095643521715099
+    second: Whalefall wasteland_12
+  - first:
+      213: -5321801227430621828
+    second: Whalefall wasteland_13
+  - first:
+      213: -4525579386386222542
+    second: Whalefall wasteland_14
+  - first:
+      213: 1037032526654590522
+    second: Whalefall wasteland_15
+  - first:
+      213: -8217165548965969409
+    second: Whalefall wasteland_16
+  - first:
+      213: -3881856579496793279
+    second: Whalefall wasteland_17
+  - first:
+      213: -3661074475992813311
+    second: Whalefall wasteland_18
+  - first:
+      213: 4865340195622380195
+    second: Whalefall wasteland_19
+  - first:
+      213: -2607668554681200014
+    second: Whalefall wasteland_20
+  - first:
+      213: 1584045839922702983
+    second: Whalefall wasteland_21
+  - first:
+      213: -8418185922034747439
+    second: Whalefall wasteland_22
+  - first:
+      213: -6038973013914930256
+    second: Whalefall wasteland_23
+  - first:
+      213: -6845560552304586465
+    second: Whalefall wasteland_24
+  - first:
+      213: -5352291286571259034
+    second: Whalefall wasteland_25
+  - first:
+      213: 6801865650698057350
+    second: Whalefall wasteland_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Whalefall wasteland_4
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 448
+        width: 831
+        height: 414
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e70d528ba4d004a40800000000000000
+      internalID: 5350290971884376190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3dbdda204b789c846a58fbd3bb3569ae
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Whalefall wasteland_0: -5339945289967535997
+      Whalefall wasteland_1: 1615563030976214500
+      Whalefall wasteland_10: -9056332866101152951
+      Whalefall wasteland_11: -1193409520827210191
+      Whalefall wasteland_12: -238095643521715099
+      Whalefall wasteland_13: -5321801227430621828
+      Whalefall wasteland_14: -4525579386386222542
+      Whalefall wasteland_15: 1037032526654590522
+      Whalefall wasteland_16: -8217165548965969409
+      Whalefall wasteland_17: -3881856579496793279
+      Whalefall wasteland_18: -3661074475992813311
+      Whalefall wasteland_19: 4865340195622380195
+      Whalefall wasteland_2: 4377757298147742452
+      Whalefall wasteland_20: -2607668554681200014
+      Whalefall wasteland_21: 1584045839922702983
+      Whalefall wasteland_22: -8418185922034747439
+      Whalefall wasteland_23: -6038973013914930256
+      Whalefall wasteland_24: -6845560552304586465
+      Whalefall wasteland_25: -5352291286571259034
+      Whalefall wasteland_26: 6801865650698057350
+      Whalefall wasteland_3: -3456984811285247123
+      Whalefall wasteland_4: 5350290971884376190
+      Whalefall wasteland_5: -1547587096019683857
+      Whalefall wasteland_6: -7684280891290141800
+      Whalefall wasteland_7: -8851912915018507223
+      Whalefall wasteland_8: 6205030371727883057
+      Whalefall wasteland_9: -8963521064268924545
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

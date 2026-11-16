@@ -10,40 +10,57 @@ using UnityEngine;
 public class EnemySideStep : MonoBehaviour
 {
     bool right = true;
+    bool sidestep = false;
     [SerializeField] float speed;
     Rect rec;
+    float rand;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rec = GetComponent<CameraBehaviour>().cameraRect;
-        transform.position -= new Vector3(0, 2, 0);
+        rand = Random.Range(2f, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Move Right
-        if (right)
+        // Move down
+        if (!sidestep)
         {
-            transform.position += speed * Time.deltaTime * -transform.right;
+            transform.position -= new Vector3(0f, 0.01f, 0f);
 
-            // Right side reached, move left
-            if (transform.position.x < rec.xMin)
+            if (transform.position.y < rand)
             {
-                right = false;
+                sidestep = true;
             }
         }
 
-        // Move Left
+        // Start sidestep
         else
         {
-            transform.position += speed * Time.deltaTime * transform.right;
-
-            // Left side reached, move right
-            if (transform.position.x > rec.xMax)
+            // Move Right
+            if (right)
             {
-                right = true;
+                transform.position += speed * Time.deltaTime * -transform.right;
+
+                // Right side reached, move left
+                if (transform.position.x < rec.xMin)
+                {
+                    right = false;
+                }
+            }
+
+            // Move Left
+            else
+            {
+                transform.position += speed * Time.deltaTime * transform.right;
+
+                // Left side reached, move right
+                if (transform.position.x > rec.xMax)
+                {
+                    right = true;
+                }
             }
         }
     }

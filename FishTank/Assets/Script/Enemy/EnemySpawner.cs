@@ -16,9 +16,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject depth_text;
 
     [SerializeField] GameObject player;
+    [SerializeField] GameObject progress_player;
 
-    string[] depth_names = { "0m", "-100m", "-1000m" };
-    string[] biome_names = { "Whalefall Wasteland", "Trash Heap", "The Bleached Reef" };
+    [SerializeField] string[] depth_names = { "0m", "-100m", "-1000m" };
+    [SerializeField] Sprite[] biome_names;
     [SerializeField] GameObject Background;
     [SerializeField] Sprite[] background_sprites;
 
@@ -34,13 +35,13 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] obstacles;
 
     bool level_complete = false;
-    
-    [SerializeField] GameObject play_space;
+
     private Rect spawn_space;
 
     private void Start()
     {
-        spawn_space = play_space.GetComponent<CameraBehaviour>().cameraRect;
+        spawn_space = GetComponent<CameraBehaviour>().cameraRect;
+        progress_player.transform.position = new Vector2(8.4f, -4.25f);
     }
 
     // Update is called once per frame
@@ -52,10 +53,12 @@ public class EnemySpawner : MonoBehaviour
             // Increase 
             start_timer += Time.deltaTime;
 
-            // Display the current biome name
+            // Display new biome stuff
             if (waves < 3 && start_timer > 2)
             {
-                biome_text.GetComponent<TextMeshProUGUI>().text = biome_names[waves];
+                biome_text.SetActive(true);
+                depth_text.SetActive(true);
+                biome_text.GetComponent<SpriteRenderer>().sprite = biome_names[waves];
                 depth_text.GetComponent<TextMeshProUGUI>().text = "Depth: " + depth_names[waves];
                 Background.GetComponent<SpriteRenderer>().sprite = background_sprites[waves];
             }
@@ -65,9 +68,7 @@ public class EnemySpawner : MonoBehaviour
                 level_complete = true;
             }
 
-            biome_text.SetActive(true);
-            depth_text.SetActive(true);
-
+            // Start spawning enemies
             if (start_timer > wave_interval)
             {
                 biome_text.SetActive(false);
@@ -77,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
                 timer += Time.deltaTime;
 
                 // Move to the next wave
-                if (wave_cost < 0)
+                if (wave_cost < 0 && GameObject.FindGameObjectsWithTag("Enemies").Length == 0)
                 {
                     waves++;
                     wave_text.GetComponent<TextMeshProUGUI>().text = "Waves: " + waves;
@@ -108,6 +109,7 @@ public class EnemySpawner : MonoBehaviour
                         }
 
                         wave_cost -= enemies[rand].GetComponent<EnemyBase>().enemy_score;
+                        progress_player.transform.position += new Vector3(0, enemies[rand].GetComponent<EnemyBase>().enemy_score / 50f, 0);
 
                         // Spawn from a random enemy and x-val on top of the screen
                         Instantiate(enemies[rand], new Vector3(Random.Range(spawn_space.xMin, spawn_space.xMax), 5f, 0), Quaternion.identity);
@@ -116,7 +118,28 @@ public class EnemySpawner : MonoBehaviour
                     // Spawn an obstacle
                     else
                     {
-                        Instantiate(obstacles[0], new Vector3(Random.Range(spawn_space.xMin, spawn_space.xMax), 5f, 0), Quaternion.identity);
+                        if (obstacles[waves].name == "Urchin")
+                        {
+                            rand = Random.Range(0, 2);
+
+                            // Spawn from left
+                            if (rand == 0)
+                            {
+                                Instantiate(obstacles[waves], new Vector3(-9, Random.Range(0f, 5f), 0), Quaternion.identity);
+                            }
+
+                            // Spawn from right
+                            else
+                            {
+                                Instantiate(obstacles[waves], new Vector3(9, Random.Range(0f, 5f), 0), Quaternion.identity);
+                            }
+                        }
+
+                        // Other obstacles
+                        else
+                        {
+                            Instantiate(obstacles[waves], new Vector3(Random.Range(spawn_space.xMin, spawn_space.xMax), 5f, 0), Quaternion.identity);
+                        }
                     }
                 }
             }
@@ -126,8 +149,15 @@ public class EnemySpawner : MonoBehaviour
     // Player wants to retry
     public void ResetLevel()
     {
+        GameObject[] all_enemies = GameObject.FindGameObjectsWithTag("Enemies");
+        for (int i = 0; i < all_enemies.Length; i++)
+        {
+            Destroy(all_enemies[i]);
+        }
+
         wave_cost = 100 + waves * 10; // Increase cost to move to next wave
         start_timer = 0f;
+        progress_player.transform.position = new Vector2(8.4f, -4.25f);
         player.GetComponent<PlayerMovement>().Reset();
     }
 }

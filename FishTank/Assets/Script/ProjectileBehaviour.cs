@@ -5,8 +5,8 @@ Description :   Default projectile behaviour
 **************************************************************************/
 
 using UnityEngine;
-
 [DisallowMultipleComponent] // Unity is stupid, Essentially pragma once
+[RequireComponent(typeof(CameraBehaviour))]
 
 public class ProjectileBehaviour : MonoBehaviour
 {
@@ -14,7 +14,6 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField] public int damage;
     [SerializeField] public float time_between_firing;
 
-    [SerializeField] GameObject play_space;
     private Rect move_space;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,7 +24,7 @@ public class ProjectileBehaviour : MonoBehaviour
             SoundEffectManager.Play("Projectile"); // Play projectile sounds when object is called
         }
         
-        move_space = play_space.GetComponent<CameraBehaviour>().cameraRect;
+        move_space = GetComponent<CameraBehaviour>().cameraRect;
     }
 
     // Update is called once per frame

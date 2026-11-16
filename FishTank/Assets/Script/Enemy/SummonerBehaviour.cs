@@ -19,7 +19,7 @@ public class SummonerBehaviour : MonoBehaviour
         timer += Time.deltaTime;
 
         // Summon more enemies
-        if (timer > 3 && can_summon)
+        if (timer > 6f && can_summon)
         {
             Instantiate(summons, new Vector2(Random.Range(-1f, 1f) + transform.position.x, Random.Range(-1f, 1f) + transform.position.y), transform.rotation);
             Instantiate(summons, new Vector2(Random.Range(-1f, 1f) + transform.position.x, Random.Range(-1f, 1f) + transform.position.y), transform.rotation);

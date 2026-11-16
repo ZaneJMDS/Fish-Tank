@@ -120,6 +120,7 @@ public class PlayerShoot : MonoBehaviour
                 // Hitscan holding all targets hit
                 RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, current_direction);
 
+                // Reset lazarbeam position
                 lazerbeam.SetPosition(0, transform.position);
                 lazerbeam.SetPosition(1, (current_direction * 10) + transform.position);
 
@@ -132,12 +133,13 @@ public class PlayerShoot : MonoBehaviour
                         i = hits.Length - 1;
                         print("Obstacle hit");
 
-                        lazerbeam.SetPosition(0, transform.position);
-                        lazerbeam.SetPosition(1, hits[i].transform.position);
+                        // Stop beam at obstacle
+                        lazerbeam.SetPosition(0, hits[i].transform.position);
+                        lazerbeam.SetPosition(1, transform.position);
                     }
 
-                    // Hit an enemies
-                    if (hits[i].collider.CompareTag("Enemies"))
+                    // Hit an enemy
+                    else if (hits[i].collider.CompareTag("Enemies"))
                     {
                         hits[i].collider.gameObject.GetComponent<EnemyBase>().health -= HitscanBehaviour.damage; // Decrease the enemy's health if hit
                         hits[i].collider.gameObject.GetComponent<EnemyBase>().SummonHitExplosion();

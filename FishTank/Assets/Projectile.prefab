@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8337459721866248803}
   - component: {fileID: 2714480645170248534}
   - component: {fileID: 5361008326579551679}
+  - component: {fileID: -290125419199295004}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -182,4 +183,22 @@ MonoBehaviour:
   speed: 12
   damage: 1
   time_between_firing: 0.1
-  play_space: {fileID: 0}
+  play_space: {fileID: 4328103035352665890, guid: 41f9fcd8bf1db8e439391aa0953c5e23, type: 3}
+--- !u!114 &-290125419199295004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424012882688714860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed1197c96c9ff74a952587c68ddf858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraBehaviour
+  cameraRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
