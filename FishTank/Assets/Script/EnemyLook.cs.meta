@@ -4,9 +4,11 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - player: {instanceID: 0}
-  - obj_game_manager: {instanceID: 0}
+  - DamageSplatter: {fileID: 6588177141444940745, guid: a57700c23a2697d4b85979696f01e97f, type: 3}
+  - deathsplat: {fileID: 5983353884535591442, guid: 477176021b4aeb84dbb7de2ef18a6799, type: 3}
   - bubble: {fileID: 8176603605528355211, guid: 9a7ded9a0a2f2044dbeefe0ac0ea64c5, type: 3}
+  - projectile: {instanceID: 0}
+  - hit_explosion: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

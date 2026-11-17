@@ -63,6 +63,7 @@ public class EnemyLook : Look
             for (int i = 0; i < bubbles_dropped; i++)
             {
                 Instantiate(bubble, new Vector3(transform.position.x + Random.Range(-1, 2), transform.position.y + Random.Range(-1, 2), transform.position.z), Quaternion.identity);
+                Instantiate(deathsplat, transform.position, transform.rotation);
             }
 
             GameManager.AddScore(enemy_score);
