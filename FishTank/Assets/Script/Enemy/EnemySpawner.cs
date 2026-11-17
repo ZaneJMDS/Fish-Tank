@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject wave_text;
     [SerializeField] GameObject depth_text;
 
+    // Visual indicators
     [SerializeField] GameObject player;
     [SerializeField] GameObject progress_player;
 
@@ -23,10 +24,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject Background;
     [SerializeField] Sprite[] background_sprites;
 
+    // Timers
     [SerializeField] private float interval; // Time between spawns
     private float wave_interval = 5f; // Time between waves
     private float timer = 0f; // Time to spawn enemies
-    private float start_timer = 0f;
+    private float start_timer = 0f; // 
+    
+    // Waves
     private int waves = 0;
     private int wave_cost = 100;
 
@@ -58,11 +62,13 @@ public class EnemySpawner : MonoBehaviour
             {
                 biome_text.SetActive(true);
                 depth_text.SetActive(true);
+
                 biome_text.GetComponent<SpriteRenderer>().sprite = biome_names[waves];
                 depth_text.GetComponent<TextMeshProUGUI>().text = "Depth: " + depth_names[waves];
                 Background.GetComponent<SpriteRenderer>().sprite = background_sprites[waves];
             }
 
+            // Display the last oasis, and menu buttons
             else
             {
                 level_complete = true;
@@ -78,17 +84,18 @@ public class EnemySpawner : MonoBehaviour
                 timer += Time.deltaTime;
 
                 // Move to the next wave
-                if (wave_cost < 0 && GameObject.FindGameObjectsWithTag("Enemies").Length == 0)
+                if (wave_cost <= 0 && GameObject.FindGameObjectsWithTag("Enemies").Length == 0)
                 {
                     waves++;
                     wave_text.GetComponent<TextMeshProUGUI>().text = "Waves: " + waves;
-                    start_timer = 0f;
                     Background.GetComponent<ScrollingBackground>().change_bg = true;
-                    wave_cost = 100 + waves * 10; // Increase cost to move to next wave
+
+                    GameManager.SetScore();
+                    ResetWaveCost();
                 }
 
                 // Only spawn if there are less than the max enemies
-                if (timer >= interval && wave_cost >= 0)
+                if (timer >= interval && wave_cost > 0)
                 {
                     timer = 0f;
                     int rand = Random.Range(0, 3);
@@ -149,15 +156,24 @@ public class EnemySpawner : MonoBehaviour
     // Player wants to retry
     public void ResetLevel()
     {
+        // Kill all enemies currently in the wave
         GameObject[] all_enemies = GameObject.FindGameObjectsWithTag("Enemies");
         for (int i = 0; i < all_enemies.Length; i++)
         {
             Destroy(all_enemies[i]);
         }
 
-        wave_cost = 100 + waves * 10; // Increase cost to move to next wave
-        start_timer = 0f;
+        ResetWaveCost();
+        
         progress_player.transform.position = new Vector2(8.4f, -4.25f);
         player.GetComponent<PlayerMovement>().Reset();
+        GameManager.ResetScore();
+    }
+
+    // Set wave cost based on current wave
+    public void ResetWaveCost()
+    {
+        start_timer = 0f;
+        wave_cost = 100 + waves * 10;
     }
 }

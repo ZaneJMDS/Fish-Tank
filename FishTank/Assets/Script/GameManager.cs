@@ -14,8 +14,10 @@ using UnityEngine.SocialPlatforms.Impl;
 // Class to update score
 public class GameManager : MonoBehaviour
 {
-    public static int score;
-    public static int high_score;
+    private static int score = 0;
+    private static int locked_score = 0;
+    private static int high_score = 0;
+
     [SerializeField] TextMeshProUGUI score_text;
     InputAction pause_action;
 
@@ -48,5 +50,17 @@ public class GameManager : MonoBehaviour
     public static void AddScore(int _score)
     {
         score += _score;
+    }
+
+    // Set the score happens when player resets wave
+    public static void SetScore()
+    {
+        locked_score = score; // Player keeps this score even if they die
+    }
+
+    // Reset the score when the player reaches a new wave
+    public static void ResetScore()
+    {
+        score = locked_score; 
     }
 }

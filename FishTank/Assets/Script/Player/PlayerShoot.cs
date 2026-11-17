@@ -30,6 +30,7 @@ public class PlayerShoot : MonoBehaviour
     public bool secondary_fire = true;
     private float primary_timer = 0f;
     private float secondary_timer = 0f;
+    private float lazerbeam_timer = 1f;
 
     private Vector3 currentAngle;
 
@@ -61,6 +62,21 @@ public class PlayerShoot : MonoBehaviour
         float angle_rad = (currentAngle.z + 90) * Mathf.Deg2Rad;
         Vector3 current_direction = new(Mathf.Cos(angle_rad), Mathf.Sin(angle_rad), transform.rotation.z);
 
+        // Check if the lazerbeam is currently showing to the user
+        if (lazerbeam.enabled)
+        {
+            lazerbeam_timer -= Time.deltaTime;
+            
+            lazerbeam.startColor = new Color(1f, 1f, 1f, lazerbeam_timer);
+            lazerbeam.endColor = new Color(1f, 1f, 1f, lazerbeam_timer);
+
+            if (lazerbeam_timer < 0)
+            {
+                lazerbeam_timer = 1f;
+                lazerbeam.enabled = false;
+            }
+        }
+
         // Primary fire delay
         if (!primary_fire)
         {
@@ -82,7 +98,6 @@ public class PlayerShoot : MonoBehaviour
             if (secondary_timer > HitscanBehaviour.time_between_firing)
             {
                 GetComponent<SpriteRenderer>().enabled = false; // Turret fire
-                lazerbeam.enabled = false;
 
                 secondary_fire = true;
                 secondary_timer = 0f;
@@ -115,6 +130,7 @@ public class PlayerShoot : MonoBehaviour
                 secondary_fire = false;
 
                 lazerbeam.enabled = true;
+
                 GetComponent<SpriteRenderer>().enabled = true; // turret fire
 
                 // Hitscan holding all targets hit
