@@ -2929,17 +2929,16 @@ MonoBehaviour:
   - {fileID: -8251505574100086631, guid: a329af82a3cf88d4993b1c567968a686, type: 3}
   - {fileID: -2191668444884831948, guid: 2e1f0b2474762d24982bca68e6998095, type: 3}
   - {fileID: 21300000, guid: 90f7bfb0758b0cb478ec9afc11b85e9b, type: 3}
-  interval: 2
+  interval: 1.5
   enemies:
   - {fileID: 7396747204816518508, guid: 85a3fb9338f82434ca4b7d1c6a4f592b, type: 3}
   - {fileID: 8662438956299635526, guid: 55261180274e4f4418a48a7d2d65d4a3, type: 3}
-  - {fileID: 8662438956299635526, guid: 10336465ccb408648bd19aa6b09a31e7, type: 3}
   - {fileID: 7396747204816518508, guid: 14eadc05c2aa999449f985e8f4a64c3f, type: 3}
+  LootFish: {fileID: 8662438956299635526, guid: 10336465ccb408648bd19aa6b09a31e7, type: 3}
   obstacles:
-  - {fileID: 4895136236454997060, guid: 743ce42d5bb9f2949a2c4601714f3200, type: 3}
   - {fileID: 4895136236454997060, guid: b5e507eec89696d4db90f0cf4a7ef034, type: 3}
   - {fileID: 4895136236454997060, guid: 743ce42d5bb9f2949a2c4601714f3200, type: 3}
-  - {fileID: 4895136236454997060, guid: b5e507eec89696d4db90f0cf4a7ef034, type: 3}
+  - {fileID: 4895136236454997060, guid: 743ce42d5bb9f2949a2c4601714f3200, type: 3}
 --- !u!4 &1529501972
 Transform:
   m_ObjectHideFlags: 0
@@ -3303,7 +3302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 221.89001, y: 0}
+  m_AnchoredPosition: {x: 221.89001, y: -10}
   m_SizeDelta: {x: 501.92, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1899372556

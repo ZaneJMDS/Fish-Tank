@@ -7,38 +7,43 @@ Description :   Spawn enemies and progress waves (Main game loop)
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EnemySpawner : MonoBehaviour
 {
     // Text fields
-    [SerializeField] GameObject biome_text;
-    [SerializeField] GameObject wave_text;
-    [SerializeField] GameObject depth_text;
+    [SerializeField] private GameObject biome_text;
+    [SerializeField] private GameObject wave_text;
+    [SerializeField] private GameObject depth_text;
 
     // Visual indicators
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject progress_player;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject progress_player;
 
-    [SerializeField] string[] depth_names = { "0m", "-100m", "-1000m" };
-    [SerializeField] Sprite[] biome_names;
-    [SerializeField] GameObject Background;
-    [SerializeField] Sprite[] background_sprites;
+    [SerializeField] private string[] depth_names = { "0m", "-100m", "-1000m" };
+    [SerializeField] private Sprite[] biome_names;
+    [SerializeField] private GameObject Background;
+    [SerializeField] private Sprite[] background_sprites;
 
     // Timers
-    [SerializeField] private float interval; // Time between spawns
-    private float wave_interval = 5f; // Time between waves
-    private float timer = 0f; // Time to spawn enemies
-    private float start_timer = 0f; // 
+    // Time to spawn enemies
+    private float timer = 0f;
+    [SerializeField] private float interval;
+
+    // Time between waves
+    private float start_timer = 0f;
+    private float wave_interval = 5f;
     
     // Waves
     private int waves = 0;
     private int wave_cost = 100;
 
     // Spawnables
-    public GameObject[] enemies;
-    public GameObject[] obstacles;
+    [SerializeField] private GameObject[] enemies;
+    [SerializeField] private GameObject LootFish;
+    [SerializeField] private GameObject[] obstacles;
 
-    bool level_complete = false;
+    private bool level_complete = false;
 
     private Rect spawn_space;
 
@@ -98,10 +103,10 @@ public class EnemySpawner : MonoBehaviour
                 if (timer >= interval && wave_cost > 0)
                 {
                     timer = 0f;
-                    int rand = Random.Range(0, 3);
+                    int rand = Random.Range(0, 5); // Pick spawn type
 
                     // Spawn an enemy
-                    if (rand < 2)
+                    if (rand < 3)
                     {
                         // Pick a random enemy to spawn from enemies length
                         if (waves + 1 < enemies.Length)
@@ -118,8 +123,16 @@ public class EnemySpawner : MonoBehaviour
                         wave_cost -= enemies[rand].GetComponent<EnemyBase>().enemy_score;
                         progress_player.transform.position += new Vector3(0, enemies[rand].GetComponent<EnemyBase>().enemy_score / 50f, 0);
 
-                        // Spawn from a random enemy and x-val on top of the screen
-                        Instantiate(enemies[rand], new Vector3(Random.Range(spawn_space.xMin, spawn_space.xMax), 5f, 0), Quaternion.identity);
+                        SpawnFromTop(enemies[rand]);
+                    }
+
+                    // Spawn a LootFish
+                    if (rand == 3)
+                    {
+                        wave_cost -= LootFish.GetComponent<EnemyBase>().enemy_score;
+                        progress_player.transform.position += new Vector3(0, LootFish.GetComponent<EnemyBase>().enemy_score / 50f, 0);
+
+                        SpawnFromTop(LootFish);
                     }
 
                     // Spawn an obstacle
@@ -142,10 +155,9 @@ public class EnemySpawner : MonoBehaviour
                             }
                         }
 
-                        // Other obstacles
                         else
                         {
-                            Instantiate(obstacles[waves], new Vector3(Random.Range(spawn_space.xMin, spawn_space.xMax), 5f, 0), Quaternion.identity);
+                            SpawnFromTop(obstacles[waves]);
                         }
                     }
                 }
@@ -175,5 +187,11 @@ public class EnemySpawner : MonoBehaviour
     {
         start_timer = 0f;
         wave_cost = 100 + waves * 10;
+    }
+
+    // Spawn from the top of the level
+    public void SpawnFromTop(GameObject _spawn)
+    {
+        Instantiate(_spawn, new Vector3(Random.Range(spawn_space.xMin, spawn_space.xMax), 5f, 0), Quaternion.identity);
     }
 }
