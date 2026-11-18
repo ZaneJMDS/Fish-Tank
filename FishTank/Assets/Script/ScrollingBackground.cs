@@ -10,24 +10,32 @@ using UnityEngine;
 public class ScrollingBackground : MonoBehaviour
 {
     Vector3 pos;
-    public bool change_bg = false;
+    private bool change_bg = false;
+    private bool level_complete = false;
+    private int current_background = 0;
+
     float timer = 2f;
     float end_timer = 5f;
-    [SerializeField] GameObject enemy_spawner;
+
     [SerializeField] GameObject end_screen;
     [SerializeField] GameObject button_manager;
+    [SerializeField] private Sprite[] background_sprites;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pos = new Vector3(transform.position.x, 5f, transform.position.z);
         transform.position = pos;
+
+
         end_screen.SetActive(false);
+        button_manager.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Loop around to the start
         if (transform.position.y < -5f)
         {
             transform.position = pos;
@@ -40,6 +48,8 @@ public class ScrollingBackground : MonoBehaviour
 
             GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, Mathf.Abs(timer));
 
+            if (timer < 0f) { GetComponent<SpriteRenderer>().sprite = background_sprites[current_background]; }
+
             if (timer < -2f)
             {
                 timer = 2f;
@@ -48,10 +58,10 @@ public class ScrollingBackground : MonoBehaviour
         }
 
         // Slow down to reach the pool
-        if (enemy_spawner.GetComponent<EnemySpawner>().level_complete)
+        if (level_complete)
         {
             if (end_timer > 0f) { end_timer -= Time.deltaTime; }
-            
+
             // Game has ended
             else 
             { 
@@ -66,5 +76,12 @@ public class ScrollingBackground : MonoBehaviour
         {
             transform.position -= new Vector3(transform.position.x, 0.001f, transform.position.z); // Move down
         }
+    }
+
+    // Switch to the next background
+    public void NextBackground()
+    {
+        change_bg = true;
+        current_background++;
     }
 }

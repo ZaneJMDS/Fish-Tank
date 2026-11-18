@@ -147,7 +147,6 @@ public class PlayerShoot : MonoBehaviour
                     if (hits[i].collider.CompareTag("Obstacle"))
                     {
                         i = hits.Length - 1;
-                        print("Obstacle hit");
 
                         // Stop beam at obstacle
                         lazerbeam.SetPosition(0, hits[i].transform.position);

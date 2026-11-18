@@ -16,14 +16,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject wave_text;
     [SerializeField] private GameObject depth_text;
 
-    // Visual indicators
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject progress_player;
-
-    [SerializeField] private string[] depth_names = { "0m", "-100m", "-1000m" };
+    
+    // Update background
+    [SerializeField] private string[] depth_names;
     [SerializeField] private Sprite[] biome_names;
     [SerializeField] private GameObject Background;
-    [SerializeField] private Sprite[] background_sprites;
 
     // Timers
     // Time to spawn enemies
@@ -43,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject LootFish;
     [SerializeField] private GameObject[] obstacles;
 
-    public bool level_complete = false;
+    private bool level_complete = false;
 
     private Rect spawn_space;
 
@@ -56,34 +55,28 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Only update if enemy has health
+        // Only update if the player is alive
         if (player.GetComponent<PlayerMovement>().health > 0)
         {
-            // Increase 
             start_timer += Time.deltaTime;
 
             // Display new biome stuff
-            if (waves < 3)
+            if (start_timer < wave_interval)
             {
                 biome_text.SetActive(true);
                 depth_text.SetActive(true);
-
-                biome_text.GetComponent<SpriteRenderer>().sprite = biome_names[waves];
-                depth_text.GetComponent<TextMeshProUGUI>().text = "Depth: " + depth_names[waves];
-
-                Background.GetComponent<SpriteRenderer>().sprite = background_sprites[waves];
             }
 
-            // Display the last oasis, and menu buttons
-            else
-            {
-                Background.GetComponent<SpriteRenderer>().sprite = background_sprites[waves];
-                depth_text.GetComponent<TextMeshProUGUI>().text = "Depth: " + depth_names[waves];
+            biome_text.GetComponent<SpriteRenderer>().sprite = biome_names[waves];
+            depth_text.GetComponent<TextMeshProUGUI>().text = "Depth: " + depth_names[waves];
 
+            // Last wave reached, level complete
+            if (waves == 3)
+            {
                 level_complete = true;
             }
 
-            // Start spawning enemies
+            // Start spawning enemies if the level hasn't ended
             if (start_timer > wave_interval && !level_complete)
             {
                 biome_text.SetActive(false);
@@ -97,19 +90,21 @@ public class EnemySpawner : MonoBehaviour
                 {
                     waves++;
                     wave_text.GetComponent<TextMeshProUGUI>().text = "Waves: " + waves;
-                    Background.GetComponent<ScrollingBackground>().change_bg = true;
 
                     GameManager.SetScore();
                     ResetWaveCost();
 
                     if (waves == 3) { level_complete = true; }
+
+                    Background.GetComponent<ScrollingBackground>().NextBackground();
+                    Debug.Log("Test");
                 }
 
                 // Only spawn if there are less than the max enemies
                 if (timer >= interval && wave_cost > 0 && !level_complete)
                 {
                     timer = 0f;
-                    int rand = Random.Range(0, 5); // Pick spawn type
+                    int rand = Random.Range(0, 6); // Pick spawn type
 
                     // Spawn an enemy
                     if (rand < 3)

@@ -28,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
     private float sprite_radius;
 
     [SerializeField] Sprite[] player_sprites; // Switch between health sprites
-    
+
+    [SerializeField] GameObject game_button_menu;
     [SerializeField] GameObject game_over_text;
 
     private Rect move_space;
@@ -87,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // Activate buttons and game over text here
-            GameButtonMenu.Instance.gameObject.SetActive(true);
+            game_button_menu.SetActive(true);
             game_over_text.SetActive(true);
 
             move_input = Vector2.zero;
