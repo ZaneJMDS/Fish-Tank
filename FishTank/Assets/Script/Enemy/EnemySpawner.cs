@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject LootFish;
     [SerializeField] private GameObject[] obstacles;
 
-    private bool level_complete = false;
+    public bool level_complete = false;
 
     private Rect spawn_space;
 
@@ -63,24 +63,28 @@ public class EnemySpawner : MonoBehaviour
             start_timer += Time.deltaTime;
 
             // Display new biome stuff
-            if (waves < 3 && start_timer > 2)
+            if (waves < 3)
             {
                 biome_text.SetActive(true);
                 depth_text.SetActive(true);
 
                 biome_text.GetComponent<SpriteRenderer>().sprite = biome_names[waves];
                 depth_text.GetComponent<TextMeshProUGUI>().text = "Depth: " + depth_names[waves];
+
                 Background.GetComponent<SpriteRenderer>().sprite = background_sprites[waves];
             }
 
             // Display the last oasis, and menu buttons
             else
             {
+                Background.GetComponent<SpriteRenderer>().sprite = background_sprites[waves];
+                depth_text.GetComponent<TextMeshProUGUI>().text = "Depth: " + depth_names[waves];
+
                 level_complete = true;
             }
 
             // Start spawning enemies
-            if (start_timer > wave_interval)
+            if (start_timer > wave_interval && !level_complete)
             {
                 biome_text.SetActive(false);
                 depth_text.SetActive(false);
@@ -97,10 +101,12 @@ public class EnemySpawner : MonoBehaviour
 
                     GameManager.SetScore();
                     ResetWaveCost();
+
+                    if (waves == 3) { level_complete = true; }
                 }
 
                 // Only spawn if there are less than the max enemies
-                if (timer >= interval && wave_cost > 0)
+                if (timer >= interval && wave_cost > 0 && !level_complete)
                 {
                     timer = 0f;
                     int rand = Random.Range(0, 5); // Pick spawn type

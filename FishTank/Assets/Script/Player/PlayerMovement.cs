@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Sprite[] player_sprites; // Switch between health sprites
     
-    [SerializeField] GameObject button_manager;
     [SerializeField] GameObject game_over_text;
 
     private Rect move_space;
@@ -43,18 +42,15 @@ public class PlayerMovement : MonoBehaviour
         sprite_renderer = GetComponent<SpriteRenderer>();
         sprite_radius = 0.05f * sprite_renderer.sprite.bounds.extents.x; // Unity's dumb radius math converting pixels to screen space
 
-
         move_space = GetComponent<CameraBehaviour>().cameraRect;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Make sure the player is alive
         if (health >= 0)
         {
-            button_manager.SetActive(false);
-            game_over_text.SetActive(false);
-
             // Decrease health slowly over time
             if (health > 1f)
             {
@@ -91,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // Activate buttons and game over text here
-            button_manager.SetActive(true);
+            GameButtonMenu.Instance.gameObject.SetActive(true);
             game_over_text.SetActive(true);
 
             move_input = Vector2.zero;
