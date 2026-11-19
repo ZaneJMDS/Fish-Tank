@@ -4,7 +4,6 @@ Studio      :	FishTank games
 Description :   Enemy that moves back and forth at the top of the screen
 **************************************************************************/
 
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemySideStep : MonoBehaviour

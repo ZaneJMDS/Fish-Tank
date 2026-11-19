@@ -184,7 +184,7 @@ public class PlayerShoot : MonoBehaviour
             gun_sprite_renderer.sprite = gun_sprites[current_gun].GetComponent<SpriteRenderer>().sprite;
             gun_text.GetComponent<TextMeshProUGUI>().text = gun_sprites[current_gun].name;
             gun_sprites[current_gun].transform.position = new Vector2(-6f, gun_sprites[current_gun].transform.position.y);
-            gun_sprites[current_gun].transform.localScale = new Vector2(0.75f, 0.75f);
+            gun_sprites[current_gun].transform.localScale = new Vector2(0.6f, 0.6f);
         }
     }
 }

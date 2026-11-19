@@ -11,7 +11,6 @@ public class ScrollingBackground : MonoBehaviour
 {
     Vector3 pos;
     private bool change_bg = false;
-    private bool level_complete = false;
     private int current_background = 0;
 
     float timer = 2f;
@@ -58,8 +57,10 @@ public class ScrollingBackground : MonoBehaviour
         }
 
         // Slow down to reach the pool
-        if (level_complete)
+        if (current_background == background_sprites.Length - 1)
         {
+            transform.position = pos;
+
             if (end_timer > 0f) { end_timer -= Time.deltaTime; }
 
             // Game has ended

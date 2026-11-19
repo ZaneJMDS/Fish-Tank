@@ -5,7 +5,6 @@ Description :   Enemy moves to the side or down the screen
 **************************************************************************/
 
 using System;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour

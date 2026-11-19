@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
             depth_text.GetComponent<TextMeshProUGUI>().text = "Depth: " + depth_names[waves];
 
             // Last wave reached, level complete
-            if (waves == 3)
+            if (waves == biome_names.Length - 1)
             {
                 level_complete = true;
             }
@@ -125,6 +125,7 @@ public class EnemySpawner : MonoBehaviour
                         progress_player.transform.position += new Vector3(0, enemies[rand].GetComponent<EnemyBase>().enemy_score / 50f, 0);
 
                         SpawnFromTop(enemies[rand]);
+                        if (rand == 0) { SpawnFromTop(enemies[rand]); } // Spawn 2 basic enemies
                     }
 
                     // Spawn a LootFish
